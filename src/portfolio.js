@@ -42,6 +42,7 @@ import lecturapp6 from "./assets/img/icons/projects/lecturapp/lecturapp11.png";
 export const greetings = {
   name: "Gonzalo Quispe Fernandez",
   title: "¿Que tal?, yo soy Gonzalo",
+  title2: "¿Que tal?, yo soy Gonzalo",
   // title: "¿Que tal?, me llamo Gonzalo",
   description:
     // "A passionate Full Stack Web Developer and Mobile App Developer having an experience of building Web applications with JavaScript / Reactjs / Nodejs / Python / Django / Flask and some other cool libraries and frameworks and Cross Platform Mobile Apps With Flutter.",
