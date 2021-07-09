@@ -45,7 +45,7 @@ const Skills = () => {
                           className=" bg-white rounded-circle mb--1 img-center img-fluid shadow-lg "
                           // data-icon={skill.image}
                           src={skill.image}
-                          alt="imageng
+                          alt="imageng"
                           // data-inline="false"
                         />
                       )}
