@@ -20,20 +20,39 @@ import materialui_logo from "./assets/img/icons/skills/materialui_logo.png";
 import node_logo from "./assets/img/icons/skills/node_logo.png";
 import nvim_logo from "./assets/img/icons/skills/nvim_logo.png";
 import react_logo from "./assets/img/icons/skills/react_logo.png";
-
 import react_native_logo from "./assets/img/icons/skills/react_native_logo.png";
 import redux_logo from "./assets/img/icons/skills/redux_logo.png";
 import redux_persist_logo from "./assets/img/icons/skills/redux_persist_logo.png";
-
 import scrum_logo from "./assets/img/icons/skills/scrum_logo.png";
+
+// image projects:
+import adn1 from "./assets/img/icons/projects/ADNVoladura/adn1.png";
+import adn2 from "./assets/img/icons/projects/ADNVoladura/adn2.png";
+import adn3 from "./assets/img/icons/projects/ADNVoladura/adn3.png";
+import adn4 from "./assets/img/icons/projects/ADNVoladura/adn4.png";
+import adn6 from "./assets/img/icons/projects/ADNVoladura/adn6.png";
+import adn7 from "./assets/img/icons/projects/ADNVoladura/adn7.png";
+import adn10 from "./assets/img/icons/projects/ADNVoladura/adn10.png";
+import adn12 from "./assets/img/icons/projects/ADNVoladura/adn12.png";
+
+// image projects:
+import lecturapp1 from "./assets/img/icons/projects/lecturapp/lecturapp1.png";
+import lecturapp2 from "./assets/img/icons/projects/lecturapp/lecturapp3.png";
+import lecturapp3 from "./assets/img/icons/projects/lecturapp/lecturapp5.png";
+import lecturapp4 from "./assets/img/icons/projects/lecturapp/lecturapp7.png";
+import lecturapp5 from "./assets/img/icons/projects/lecturapp/lecturapp8.png";
+import lecturapp6 from "./assets/img/icons/projects/lecturapp/lecturapp11.png";
 
 export const greetings = {
   name: "Gonzalo Quispe Fernandez",
   title: "¿Que tal?, yo soy Gonzalo",
+  // title: "¿Que tal?, me llamo Gonzalo",
   description:
     // "A passionate Full Stack Web Developer and Mobile App Developer having an experience of building Web applications with JavaScript / Reactjs / Nodejs / Python / Django / Flask and some other cool libraries and frameworks and Cross Platform Mobile Apps With Flutter.",
     "Soy un desorrallor de software frontend apasionado por la tecnología, con habilidades de liderazgo, enfocado en las tecnologías de React y React-Native.",
-  resumeLink: "https://cv.hanzla.ga", // TODO
+  // resumeLink: "https://cv.hanzla.ga",
+  resumeLink:
+"https://drive.google.com/file/d/1-rolr535gPTq6ZXSsgb02c2PI9JtsD87/view?usp=sharing"
 };
 
 export const openSource = {
@@ -50,6 +69,7 @@ export const socialLinks = {
   github: "https://github.com/Chalius",
   // linkedin: "https://www.linkedin.com/in/hanzla-tauqeer-0869281ba/",
   linkedin: "https://www.linkedin.com/in/gquispe/",
+  telegram: "https://t.me/chalius",
 };
 
 export const skillsSection = {
@@ -57,7 +77,8 @@ export const skillsSection = {
   title: "Lo que hago",
   // subTitle: "CRAZY FULL STACK DEVELOPER WHO WANTS TO EXPLORE EVERY TECH STACK",
   subTitle:
-    "DESARROLLADOR FROND END QUE QUIERE CONVERTIRSE EN EXPERTO FULLSTACK.",
+    "DESARROLLADOR FROND END QUE QUIERE CONVERTIRSE EN EXPERTO FULLSTACK CON LAS TECNOLOGÍAS MERN.",
+  // "LAS TECNOLOGÍAS QUE MÁS SUELO USAR SON LAS SIGUIENTES",
   skills: [
     /* emoji(
     "⚡ Develop highly interactive Front end / User Interfaces for your web and mobile applications"
@@ -341,17 +362,50 @@ export const projects = [
       "Figma",
       "Lean Canvas",
     ],
+    imgs_for_slider: [
+      { source: lecturapp1 },
+      { source: lecturapp2 },
+      { source: lecturapp3 },
+      { source: lecturapp4 },
+      { source: lecturapp5 },
+      { source: lecturapp6 },
+    ],
   },
+
+  /* import android_logo2 from "../assets/img/icons/skills/android_logo.png";
+import aws_logo2 from "../assets/img/icons/skills/aws_logo.png";
+import docker_logo2 from "../assets/img/icons/skills/docker_logo.png"; */
+
   {
     name: "ADNVoladura",
     desc: "Aplicativo móvil que resuelve complicadas formulas matemáticas para facilitar la tarea de operadores de minería a cielo abierto.",
     technologies: ["React-Native", "Redux", "Redux-persist"],
-    youtube: true
+    imgs_for_slider: [
+      { source: adn1 },
+      { source: adn2 },
+      { source: adn3 },
+      { source: adn4 },
+      { source: adn6 },
+      { source: adn7 },
+      { source: adn10 },
+      { source: adn12 },
+    ],
   },
   {
     name: "Robot Araña",
     desc: "Robot que se controla mediante internet desarrollado con Arduino que captura datos como: temperatura, humedad, etc. y se lo envía a un servidor para que los almacene.",
     technologies: ["Arduino", "Django", "Android"],
+    youtube: "vBdkIV7YfYU",
+    /* link: {
+      name: "hanzla",
+      url: "kasjfklsdjf",
+    }, */
+  },
+  {
+    name: "App para restaurante",
+    desc: "Aplicativo multiplataforma que sirve para realizar pedidos de comida.",
+    technologies: ["React-native", "Firebase"],
+    youtube: "5ebskOPeNFQ",
     /* link: {
       name: "hanzla",
       url: "kasjfklsdjf",

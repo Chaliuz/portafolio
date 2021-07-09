@@ -6,6 +6,9 @@ import { Fade } from "react-reveal";
 
 import YouTube from "react-youtube";
 
+import AwesomeSlider from "react-awesome-slider";
+import "react-awesome-slider/dist/styles.css";
+
 const ProjectsCard = ({ data }) => {
   return (
     <Col lg="6">
@@ -46,10 +49,45 @@ const ProjectsCard = ({ data }) => {
                 ) : null}
 
                 {data.youtube ? (
-                  <YouTube
-                    videoId={"vBdkIV7YfYU"} // defaults -> null
-                    opts={{ width: "95%" }}
-                  />
+                  <div
+                    style={
+                      {
+                        // display: "flex",
+                        // justifyContent: "center",
+                        // alignSelf: "center",
+                        // alignItems: "center",
+                        // width: "87%",
+                      }
+                    }
+                  >
+                    <YouTube videoId={data.youtube} opts={{ width: "95%" }} />
+                  </div>
+                ) : null}
+                {data.imgs_for_slider ? (
+                  <div
+                    style={{
+                      display: "flex",
+                      // alignSelf: "center",
+                      justifyContent: "center",
+                      marginBottom: 50,
+                    }}
+                  >
+                    <AwesomeSlider
+                      // media={[
+                      //   {
+                      //     source: android_logo,
+                      //   },
+                      //   {
+                      //     source: aws_logo,
+                      //   },
+                      //   {
+                      //     source: docker_logo,
+                      //   },
+                      // ]}
+                      style={{ height: 400, width: 200 }}
+                      media={data.imgs_for_slider}
+                    />
+                  </div>
                 ) : null}
               </div>
             </div>

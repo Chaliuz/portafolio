@@ -61,6 +61,16 @@ const SocialLinks = () => {
           <i className="fa fa-linkedin" />
         </span>
       </Button>
+      <Button
+        className="btn-icon-only rounded-circle ml-1"
+        color="github"
+        href={socialLinks.telegram}
+        target="_blank"
+      >
+        <span className="btn-inner--icon">
+          <i className="fa fa-telegram" />
+        </span>
+      </Button>
     </div>
   );
 };

@@ -107,6 +107,18 @@ const Navigation = () => {
                     </span>
                   </NavLink>
                 </NavItem>
+                <NavItem>
+                  <NavLink
+                    className="nav-link-icon"
+                    href={socialLinks.telegram}
+                    target="_blank"
+                  >
+                    <i className="fa fa-telegram" />
+                    <span className="nav-link-inner--text d-lg-none ml-2">
+                      Telegram
+                    </span>
+                  </NavLink>
+                </NavItem>
               </Nav>
             </UncontrolledCollapse>
           </Container>
