@@ -19,7 +19,7 @@ const GithubProfileCard = ({ prof }) => {
               />
             </Col>
             <Col lg="8" className="order-lg-1">
-              <h2 className="text-white">Contactame</h2>
+              <h2 className="text-white">Contáctame</h2>
               <p className="lead text-white mt-3">
                 ¿QUIERES CONVERSAR SOBRE UN PROYECTO O TIENES ALGUNA DUDA?
                 PUEDES CONTACTARME POR MIS REDES SOCIALES:

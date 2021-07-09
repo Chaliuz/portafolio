@@ -270,7 +270,7 @@ export const educationInfo = [
     schoolName: "Instituto tecnológico TECSUP",
     subHeader: "Desarrollo de software e integración de sistemas",
     duration: "Marzo 2018 - Enero 2021",
-    desc: "Egresé en el decimo superior ocupando el 2do puesto de mi promoción.",
+    desc: "Egresé en el decimo superior ocupando el 2do puesto de mi carrera.",
     /* descBullets: [
     "Lorem ipsum dolor sit amet, consectetur adipdfgiscing elit",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
@@ -288,7 +288,7 @@ export const educationInfo = [
     schoolName: "Universidad Nacional de San Agustín (UNSA)",
     subHeader: "Ingeniería de minas",
     duration: "September 2012 - April 2017",
-    desc: "Entré a trabajar en la mina Cerro Verde.",
+    // desc: "Trabajé en la mina Cerro Verde como vigía y ayudante mecánico.",
     /* descBullets: [
     "Lorem ipsum dolor sit amet, consectetfgur adipiscing elit",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
