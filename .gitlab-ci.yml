@@ -40,4 +40,4 @@ build:
     - npm build
   artifacts:
     paths:
-      - build/          # Save the build result as an artfact
+      - public
