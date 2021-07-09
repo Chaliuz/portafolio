@@ -49,7 +49,7 @@ export const greetings = {
     "Soy un desorrallor de software frontend apasionado por la tecnología, con habilidades de liderazgo, enfocado en las tecnologías de React y React-Native.",
   // resumeLink: "https://cv.hanzla.ga",
   resumeLink:
-    "https://drive.google.com/file/d/1-rolr535gPTq6ZXSsgb02c2PI9JtsD87/view?usp=sharing",
+    "https://drive.google.com/file/d/1yJchLoAAhApJPkhsSAymTNkwH0QKDXXE/view?usp=sharing",
 };
 
 export const openSource = {
