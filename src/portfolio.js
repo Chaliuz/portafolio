@@ -315,7 +315,7 @@ export const experience = [
     companylogo: logo_app_lecturapp,
 
     date: "Enero 2021 – Actualidad",
-    desc: "Desorrolló a medio tiempo un aplicativo multiplataforma usando React-Native. Esta app busca hacer gustar la lectura a los niños.",
+    desc: "Desorrolló a medio tiempo un aplicativo multiplataforma usando React-Native. Esta app busca que a los niños les agrade la lectura.",
   },
   {
     /* role: "software engineer",
@@ -332,7 +332,7 @@ export const experience = [
     companylogo: connecttix,
 
     date: "Noviembre 2019 – Febrero 2020",
-    desc: "Desarrolló de aplicativo Android para el control de gasolina de camioneros.",
+    desc: "Desarrolló de aplicativo Android para el control de gasolina de camiones.",
     /* descbullets: [
       "lorem ipsum dolor sit amet, consdfgectetur adipiscing elit",
       "lorem ipsum dolor sit amet, consectetur adipiscing elit",
