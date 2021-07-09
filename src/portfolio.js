@@ -1,9 +1,5 @@
 import emoji from "react-easy-emoji";
 
-import googlelogo from "./assets/img/icons/common/google.svg";
-import github from "./assets/img/icons/common/github.svg";
-import airbnb from "./assets/img/icons/common/airbnbLogo.png";
-
 import connecttix from "./assets/img/icons/common/connecttix.jpg";
 import logo_app_lecturapp from "./assets/img/icons/common/logo_app_lecturapp.png";
 
