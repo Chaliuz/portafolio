@@ -46,7 +46,7 @@ export const greetings = {
   // title: "¿Que tal?, me llamo Gonzalo",
   description:
     // "A passionate Full Stack Web Developer and Mobile App Developer having an experience of building Web applications with JavaScript / Reactjs / Nodejs / Python / Django / Flask and some other cool libraries and frameworks and Cross Platform Mobile Apps With Flutter.",
-    "Soy un desorrallor de software frontend apasionado por la tecnología, con habilidades de liderazgo, enfocado en las tecnologías de React y React-Native.",
+    "Soy un desorrallor de software Fullstack apasionado por la tecnología, con habilidades de liderazgo, enfocado en las tecnologías de React, React-Native y Django.",
   // resumeLink: "https://cv.hanzla.ga",
   resumeLink:
     "https://drive.google.com/file/d/1yJchLoAAhApJPkhsSAymTNkwH0QKDXXE/view?usp=sharing",
