@@ -20,6 +20,7 @@ import react_native_logo from "./assets/img/icons/skills/react_native_logo.png";
 import redux_logo from "./assets/img/icons/skills/redux_logo.png";
 import redux_persist_logo from "./assets/img/icons/skills/redux_persist_logo.png";
 import scrum_logo from "./assets/img/icons/skills/scrum_logo.png";
+import django_logo from "./assets/img/icons/skills/django.png";
 
 // image projects:
 import adn1 from "./assets/img/icons/projects/ADNVoladura/adn1.png";
@@ -74,7 +75,7 @@ export const skillsSection = {
   title: "Lo que hago",
   // subTitle: "CRAZY FULL STACK DEVELOPER WHO WANTS TO EXPLORE EVERY TECH STACK",
   subTitle:
-    "DESARROLLADOR FROND END QUE QUIERE CONVERTIRSE EN EXPERTO FULLSTACK CON LAS TECNOLOGÍAS MERN.",
+    "DESARROLLADOR FULLSTACK QUE QUIERE CONVERTIRSE EN EXPERTO EN LAS TECNOLOGÍAS REACT, REACT-NATIVE Y DJANGO.",
   // "LAS TECNOLOGÍAS QUE MÁS SUELO USAR SON LAS SIGUIENTES",
   skills: [
     /* emoji(
@@ -88,6 +89,7 @@ export const skillsSection = {
       "⚡ Desarrollo de aplicaciones multiplataforma para iOS y Android usando react-native"
     ),
     emoji("⚡ Desarrollo de páginas web usando React y css3 Flex-box"),
+    emoji("⚡ Creación de webservices con Django"),
     emoji(
       "⚡ Integración de servicios de terceros como Firebase / AWS / Google cloud"
     ),
@@ -122,6 +124,10 @@ export const skillsSection = {
     {
       skillName: "MaterialUI",
       image: materialui_logo,
+    },
+    {
+      skillName: "Django",
+      image: django_logo,
     },
     {
       skillName: "Git-GitHub-GitLab",
