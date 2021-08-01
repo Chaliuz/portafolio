@@ -93,9 +93,10 @@ export const skillsSection = {
     emoji(
       "⚡ Integración de servicios de terceros como Firebase / AWS / Google cloud"
     ),
-    emoji(
+    /* emoji(
       "⚡ Tengo conocimientos sobre temas de emprendimiento y habilidades de liderazgo"
-    ),
+    ), */
+    emoji("⚡ Tengo interes en los temas relacionados con emprendimiento"),
   ],
 
   softwareSkills: [
