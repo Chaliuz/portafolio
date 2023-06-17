@@ -1,0 +1,11 @@
+services:
+  node10:
+    build: .
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/home/code/
+    ports:
+      - "3000:3000"
+    command: npm start
+

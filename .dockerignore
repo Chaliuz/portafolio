@@ -1,0 +1,15 @@
+**/.git
+**/.github
+**/_site
+**/public
+**/node_modules
+.eslintcache
+.gitattributes
+.gitignore
+.gitlab-ci.yml
+gulpfile.js
+jsconfig.json
+LICENSE
+package-lock.json
+picture.PNG
+README.md
