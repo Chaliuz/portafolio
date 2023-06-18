@@ -1,11 +1,11 @@
 services:
-  node10:
+  portfolio:
     build: .
+    command: npm start
     stdin_open: true
     tty: true
     volumes:
-      - .:/home/code/
+      - .:/code/
+      - /code/node_modules
     ports:
       - "3000:3000"
-    command: npm start
-

@@ -1,12 +1,10 @@
 FROM node:10-alpine
-# FROM node:10-bullseye
-# FROM node:10-buster
 
-WORKDIR /home/code/
+WORKDIR /code/
 
-COPY ./package.json /home/code/
+COPY package.json /code/
 RUN npm install 
-COPY . /home/code/
+COPY . /code/
 
-RUN npm rebuild node-sass
+# RUN npm rebuild node-sass
 
