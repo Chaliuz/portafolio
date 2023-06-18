@@ -47,7 +47,8 @@ export const greetings = {
   // title: "¿Que tal?, me llamo Gonzalo",
   description:
     // "A passionate Full Stack Web Developer and Mobile App Developer having an experience of building Web applications with JavaScript / Reactjs / Nodejs / Python / Django / Flask and some other cool libraries and frameworks and Cross Platform Mobile Apps With Flutter.",
-    "Soy un desorrallor de software Fullstack apasionado por la tecnología, con habilidades de liderazgo, enfocado en las tecnologías de React, React-Native y Django.",
+    // "Soy un desorrallor de software Fullstack apasionado por la tecnología, con habilidades de liderazgo, enfocado en las tecnologías de React, React-Native y Django.",
+    "Soy un desorrallor de software Fullstack apasionado por la tecnología, enfocado en las tecnologías de React, React-Native y Django.",
   // resumeLink: "https://cv.hanzla.ga",
   resumeLink:
     "https://drive.google.com/file/d/1yJchLoAAhApJPkhsSAymTNkwH0QKDXXE/view?usp=sharing",
@@ -80,22 +81,17 @@ export const skillsSection = {
   skills: [
     /* emoji(
     "⚡ Develop highly interactive Front end / User Interfaces for your web and mobile applications"
-  ),
-  emoji("⚡ Progressive Web Applications ( PWA ) in normal and SPA Stacks"),
-  emoji(
-    "⚡ Integration of third party services such as Firebase/ AWS / Digital Ocean"
-  ), */
-    emoji(
-      "⚡ Desarrollo de aplicaciones multiplataforma para iOS y Android usando react-native"
     ),
+    emoji("⚡ Progressive Web Applications ( PWA ) in normal and SPA Stacks"),
+    emoji(
+      "⚡ Integration of third party services such as Firebase/ AWS / Digital Ocean"
+    ), */
+
+    emoji("⚡ Desarrollo de aplicaciones multiplataforma para iOS y Android usando react-native"),
     emoji("⚡ Desarrollo de páginas web usando React y css3 Flex-box"),
     emoji("⚡ Creación de webservices con Django"),
-    emoji(
-      "⚡ Integración de servicios de terceros como Firebase / AWS / Google cloud"
-    ),
-    /* emoji(
-      "⚡ Tengo conocimientos sobre temas de emprendimiento y habilidades de liderazgo"
-    ), */
+    emoji("⚡ Integración de servicios de terceros como Firebase / AWS / Google cloud"),
+    // emoji("⚡ Tengo conocimientos sobre temas de emprendimiento y habilidades de liderazgo"),
     emoji("⚡ Tengo interes en los temas relacionados con emprendimiento"),
   ],
 

@@ -1,5 +1,5 @@
 services:
-  portfolio:
+  node10:
     build: .
     command: npm start
     stdin_open: true
