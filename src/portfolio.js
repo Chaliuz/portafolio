@@ -274,7 +274,8 @@ export const educationInfo = [
     schoolName: "Instituto tecnológico TECSUP",
     subHeader: "Desarrollo de software e integración de sistemas",
     duration: "Marzo 2018 - Enero 2021",
-    desc: "Egresé en el decimo superior ocupando el 2do puesto de mi carrera.",
+    // desc: "Egresé en el decimo superior ocupando el 2do puesto de mi carrera.",
+    desc: "Egresé en el decimo superior de mi salón.",
     /* descBullets: [
     "Lorem ipsum dolor sit amet, consectetur adipdfgiscing elit",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
@@ -292,12 +293,66 @@ export const educationInfo = [
     schoolName: "Universidad Nacional de San Agustín (UNSA)",
     subHeader: "Ingeniería de minas",
     duration: "September 2012 - April 2017",
-    // desc: "Trabajé en la mina Cerro Verde como vigía y ayudante mecánico.",
+    desc: "Bachiller en ingeniería de minas.",
     /* descBullets: [
     "Lorem ipsum dolor sit amet, consectetfgur adipiscing elit",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     ], */
   },
+  {
+    schoolName: "Platzi",
+    subHeader: "Curso de React native",
+    duration: "Septiembre 2020",
+    desc: "Aprobe satisfactoriamente el curso de React native dictado por la plataforma platzi.",
+    url: "https://drive.google.com/file/d/1rZt8A4ItuPhHnz1PSEGDp4viKh3GsDHR/view?usp=sharing"
+  },
+  {
+    schoolName: "Platzi",
+    subHeader: "Curso de Typescript",
+    duration: "Septiembre 2020",
+    desc: "Aprendí los fundamentos básicos del lenguaje de programación Typescript dictado por la plataforma platzi.",
+    url: "https://drive.google.com/file/d/1xrcM_sROi9tQC7OKSPpP9r3lXBycBZgx/view?usp=sharing"
+  },
+  {
+    schoolName: "Platzi",
+    subHeader: "Curso de HTML, CSS",
+    duration: "Julio 2021",
+    desc: "Repasé los temas de HTML y CSS fundamentales para el desarrollo web.",
+    url: "https://drive.google.com/file/d/11YtF_azFSccoxN8l8SLE6rgzTW9J9dKh/view?usp=sharing"
+  },
+  {
+    schoolName: "Platzi",
+    subHeader: "Curso de Django",
+    duration: "Agosto 2021",
+    desc: "Repasé el popular framework de Django.",
+    url: "https://drive.google.com/file/d/1ZNReIFabsWyGHriLPYZ5lw0d8ENEwhd0/view?usp=sharing"
+  },
+  {
+    schoolName: "Platzi",
+    subHeader: "Curso de diseño para programadores",
+    duration: "Agosto 2021",
+    desc: "Aprendí los fundamentos del diseño para crear mejores aplicaciones.",
+    url: "https://drive.google.com/file/d/1UExK8i4CuSryXIl8bShOOPss0ahuIktM/view?usp=sharing"
+  },
+
+  {
+    schoolName: "Platzi",
+    subHeader: "Curso de CSS grid layout",
+    duration: "Julio 2021",
+    desc: "Aprendí a usar la técnica de hojas de estilos grid.",
+    url: "https://drive.google.com/file/d/1Gd_MIGBignq0HADgYVyKY2MbeM6Hl9k4/view?usp=sharing"
+  },
+
+  {
+    schoolName: "Platzi",
+    subHeader: "Curso de Unit Testing con Jest en react",
+    duration: "Julio 2021",
+    desc: "Comprendí los fundamentos de realizar pruebas unitarias para react con la libreria Jest.",
+    url: "https://drive.google.com/file/d/1Q3x2D7NM_F9aQGrDz-5VvwJSqKWl7v4s/view?usp=sharing"
+  },
+
+
+
   /* {
     schoolName: "Stanford University",
     subHeader: "Bachelor of Science in Computer Science",

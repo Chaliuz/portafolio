@@ -31,7 +31,11 @@ const EdutionCard = ({education}) => {
                                     return <li key={desc}>{desc}</li>
                                 }) : null
                             }
-                        </ul>
+                            </ul>
+                                {education.url ? 
+                                  <a href={education.url} target="_blank" rel="noopener noreferrer">Enlace a diploma</a>
+                                : null
+                                }
                         </p>
                     </div>
                     </div>
