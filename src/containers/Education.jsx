@@ -3,9 +3,9 @@ import EdutionCard from "../components/EdutionCard";
 import { educationInfo } from "../portfolio";
 import { Container, Row, Col } from "reactstrap";
 
-const Edution = () => {
+const Education = () => {
   return (
-    <section className="section pb-0 bg-gradient-info my-5 bg-primary text-white">
+    <section style={{}} className="section pb-0 bg-gradient-info my-3 bg-primary text-white" >
       <Container>
         <div className="d-flex px-3">
           <div>
@@ -19,22 +19,24 @@ const Edution = () => {
         </div>
         {/* old */}
         {/* --------------------------------------------------- */}
-        <Row className="row-grid align-items-center">
-          {educationInfo.map((info) => {
-            return (
-              <Col className="order-lg-1" lg="5" px="0" key={info.schoolName}>
-                <EdutionCard education={info} />
-              </Col>
-            );
-          })}
-        </Row>
+        {/* <Row className="row-grid align-items-center"> */}
+        {/*   {educationInfo.map((info) => { */}
+        {/*     return ( */}
+        {/*       <Col className="order-lg-1" lg="5" px="0" key={info.schoolName}> */}
+        {/*         <EdutionCard education={info} /> */}
+        {/*       </Col> */}
+        {/*     ); */}
+        {/*   })} */}
+        {/* </Row> */}
         {/* --------------------------------------------------- */}
         {/* new */}
         {/* --------------------------------------------------- */}
-        <div className="d-flex flex-wrap align-items-stretch">
+        {/* <div className="d-flex flex-wrap align-items-stretch"> */}
+        <div style={{display:"flex", flexWrap:"wrap",margin:"1rem auto", justifyContent:"center"}}>
           {educationInfo.map((info) => {
             return (
-              <div className="w-25 m-2" key={info.schoolName}>
+              // <div className="w-25 m-2" key={info.schoolName}> 
+              <div style={{width:"20rem", margin:"0.5rem"}} key={info.schoolName}>
                 <EdutionCard education={info} />
               </div>
             );
@@ -45,20 +47,20 @@ const Edution = () => {
 
         {/* --------------------------------------------------- */}
       </Container>
-      <div className="separator separator-bottom separator-skew zindex-100">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          version="1.1"
-          viewBox="0 0 2560 100"
-          x="0"
-          y="0"
-        >
-          <polygon className="fill-white" points="2560 0 2560 100 0 100" />
-        </svg>
-      </div>
+      {/* <div className="separator separator-bottom separator-skew zindex-100"> */}
+      {/*   <svg */}
+      {/*     xmlns="http://www.w3.org/2000/svg" */}
+      {/*     preserveAspectRatio="none" */}
+      {/*     version="1.1" */}
+      {/*     viewBox="0 0 2560 100" */}
+      {/*     x="0" */}
+      {/*     y="0" */}
+      {/*   > */}
+      {/*     <polygon className="fill-white" points="2560 0 2560 100 0 100" /> */}
+      {/*   </svg> */}
+      {/* </div> */}
     </section>
   );
 };
 
-export default Edution;
+export default Education;

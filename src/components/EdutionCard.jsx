@@ -8,21 +8,23 @@ import {
 
 import { Fade } from 'react-reveal';
 
+
 const EdutionCard = ({education}) => {
     return ( 
-        <Fade right duration={1000} distance="40px">
-            <Card className="card-lift--hover shadow mt-4">
-                <CardBody>
-                    <div className="d-flex px-3">
-                    <div className="pl-4">
-                        <h5 className="text-info">
+        <Fade right duration={1000} distance="40px" >
+            <Card className="card-lift--hover shadow mt-5" style={{}}>
+                <CardBody style={{height:"16rem"}}>
+                    {/* <div className="d-flex px-3"> */}
+                    {/* <div className="pl-4"> */}
+                    <div style={{display: "flex", flexDirection:"column",padding:"0rem 0rem 0rem 3rem"}}>
+                        <h5 className="text-info" style={{marginTop:"-10px"}}>
                         {education.schoolName}
                         </h5>
                         <h6>{education.subHeader}</h6>
-                        <Badge color="info" className="mr-1">
+                        <Badge color="info" className="mr-1" style={{alignSelf:"start"}}>
                         {education.duration}
-                    </Badge>
-                        <p className="description mt-3">
+                        </Badge>
+                        <p className="description mt-2 ">
                             {education.desc}
                             <ul>
                             {
@@ -33,12 +35,12 @@ const EdutionCard = ({education}) => {
                             }
                             </ul>
                                 {education.url ? 
-                                  <a href={education.url} target="_blank" rel="noopener noreferrer">Enlace a diploma</a>
+                                  <a style={{}} href={education.url} target="_blank" rel="noopener noreferrer">Enlace a diploma</a>
                                 : null
                                 }
                         </p>
                     </div>
-                    </div>
+                    {/* </div> */}
                 </CardBody>
             </Card>
         </Fade>

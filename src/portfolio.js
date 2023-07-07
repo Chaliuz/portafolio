@@ -324,7 +324,7 @@ export const educationInfo = [
     schoolName: "Platzi",
     subHeader: "Curso de Django",
     duration: "Agosto 2021",
-    desc: "Repasé el popular framework de Django.",
+    desc: "Repasé el popular framework backend de python.",
     url: "https://drive.google.com/file/d/1ZNReIFabsWyGHriLPYZ5lw0d8ENEwhd0/view?usp=sharing"
   },
   {
@@ -396,6 +396,14 @@ export const experience = [
       "lorem ipsum dolor sit amet, consdfgectetur adipiscing elit",
       "lorem ipsum dolor sit amet, consectetur adipiscing elit",
     ], */
+  },
+  {
+    role: "Desarrollador de software móvil",
+    company: "ConnectiX",
+    companylogo: connecttix,
+
+    date: "Noviembre 2019 – Febrero 2020",
+    desc: "Desarrolló de aplicativo Android para el control de gasolina de camiones.",
   },
   /* {
     role: "Software Engineer Intern",
