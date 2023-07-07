@@ -398,12 +398,12 @@ export const experience = [
     ], */
   },
   {
-    role: "Desarrollador de software móvil",
-    company: "ConnectiX",
-    companylogo: connecttix,
+    role: "TI",
+    company: "Clínica San Pablo",
+    // companylogo: connecttix,
 
-    date: "Noviembre 2019 – Febrero 2020",
-    desc: "Desarrolló de aplicativo Android para el control de gasolina de camiones.",
+    date: "2022",
+    desc: "La clínica San Pablo encargó un nuevo software para controlar las vacunas contra el COVID-19 de los trabajadores de la mina Quellaveco, por lo que me contrataron para apoyar en la implementación de dicho software.",
   },
   /* {
     role: "Software Engineer Intern",
