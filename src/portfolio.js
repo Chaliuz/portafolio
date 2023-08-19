@@ -474,4 +474,15 @@ import docker_logo2 from "../assets/img/icons/skills/docker_logo.png"; */
       url: "kasjfklsdjf",
     }, */
   },
+  {
+    name: "Practical trading pro.",
+    desc: "Página web informativa sobre una plataforma de trading.",
+    technologies: ["React", "nextjs", "tailwind css", "flexbox"],
+    // 
+    // youtube: "5ebskOPeNFQ",
+    link: {
+      name: "practical trading pro",
+      url: "https://www.practicaltradingpro.com/",
+    },
+  },
 ];
