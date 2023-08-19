@@ -234,14 +234,16 @@ export const skillsSection = {
 
 export const SkillBars = [
   {
-    Stack: "React-Native",
+    Stack: "React y react-native",
     progressPercentage: "80",
   },
   {
-    /* Stack: "Frontend/Design", //Insert stack or technology you have experience in
-  progressPercentage: "90", //Insert relative proficiency in percentage */
-    Stack: "React", //Insert stack or technology you have experience in
-    progressPercentage: "70", //Insert relative proficiency in percentage
+    Stack: "Nextjs", //Insert stack or technology you have experience in
+    progressPercentage: "60", //Insert relative proficiency in percentage
+  },
+  {
+    Stack: "Backend con django",
+    progressPercentage: "50",
   },
   {
     Stack: "Redux",
@@ -251,14 +253,10 @@ export const SkillBars = [
     Stack: "Flex-box",
     progressPercentage: "60",
   },
-  {
-    Stack: "Emprendimiento",
-    progressPercentage: "60",
-  },
-  {
-    Stack: "Backend con node.js:",
-    progressPercentage: "50",
-  },
+  // {
+  //   Stack: "Emprendimiento",
+  //   progressPercentage: "60",
+  // },
 ];
 
 export const educationInfo = [
@@ -364,11 +362,6 @@ export const educationInfo = [
 
 export const experience = [
   {
-    /* role: "Front-End Developer",
-    company: "Github",
-    companylogo: github,
-    date: "May 2017 – May 2018",
-    desc: "Lorem ipsum dolor sit amet, consefdctetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", */
     role: "Desarrollo móvil multiplataforma",
     company: "Emprendimiento propio",
     companylogo: logo_app_lecturapp,
@@ -401,7 +394,6 @@ export const experience = [
     role: "TI",
     company: "Clínica San Pablo",
     // companylogo: connecttix,
-
     date: "2022",
     desc: "La clínica San Pablo encargó un nuevo software para controlar las vacunas contra el COVID-19 de los trabajadores de la mina Quellaveco, por lo que me contrataron para apoyar en la implementación de dicho software.",
   },
