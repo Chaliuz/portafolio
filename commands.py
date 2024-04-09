@@ -1,6 +1,6 @@
 from ranger import MAX_RESTORABLE_TABS
 from ranger.api.commands import Command
-from plugins.ranger_udisk_menu.mounter import mount
+# from plugins.ranger_udisk_menu.mounter import mount
 
 class paste_as_root(Command):
 	def execute(self):
@@ -229,15 +229,24 @@ class make_screenshots(Command):
             # ---------------------------------------------------
 
 
-class test(Command):
-    """
-    :test
+# class test(Command):
+#     """
+#     :test
 
-    Test command.
+#     Test command.
+#     """
+#     def execute(self):
+#         import subprocess
+#         # this_file = self.fm.thisfile
+#         command=f"echo {Command}"
+
+#         self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
+
+class echo(Command):
+    """:echo <text>
+
+    Display the text in the statusbar.
     """
+
     def execute(self):
-        import subprocess
-        # this_file = self.fm.thisfile
-        command=f"echo {Command}"
-
-        self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
+        self.fm.notify(self.rest(1))

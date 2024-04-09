@@ -1,1 +1,2 @@
 # I must run: yay -S python-pymediainfo
+# If I don't install this dependencie the function commanasd (commands.py) doesn't work.
