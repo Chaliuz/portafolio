@@ -297,13 +297,66 @@ class echo(Command):
 
 class reduce_video_size(Command):
 
+
+    #end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
+    #command = f"ffmpeg -i {file.dirname}/'{file.basename}' -vcodec libx265 -crf 28 {name_without_extension}_reduced.mp4 && {end_sound}"
+    #self.fm.notify(f"output: {index}")
+
+    # First version that works more and less
+    # 
+    """
     def execute(self):
         import subprocess
 
-        for file in self.fm.thistab.get_selection(): 
+        #for file in self.fm.thistab.get_selection(): 
+        for index, file in enumerate(self.fm.thistab.get_selection(), start=0): 
             name_without_extension, _ = os.path.splitext(f"{file.basename}")
-            #self.fm.notify(f"output: {file.basename}")
 
-            end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
-            command = f"ffmpeg -i {file.dirname}/'{file.basename}' -vcodec libx265 -crf 28 {name_without_extension}_reduced.mp4 && {end_sound}"
-            process = subprocess.Popen(command, shell=True) # detached way
+            command = f"ffmpeg -i {file.dirname}/'{file.basename}' -vcodec libx265 -crf 28 {name_without_extension}_reduced.mp4"
+            process1 = subprocess.Popen(command, shell=True) # detached way
+            if index == len(self.fm.thistab.get_selection())-1:
+                #process1.wait()
+                stdout, stderr = process1.communicate()
+                end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
+                process2 = subprocess.Popen(end_sound, shell=True) # detached way
+
+                #self.fm.notify(f"output: {index}")
+    """
+
+    # ---------------------------------------------------
+
+class reduce_video_size(Command):
+    # Note: I must press enter after run the command in order to watch again ranger interface.
+
+    def loop_through_all_files(self):
+        import subprocess
+        for index, file in enumerate(self.fm.thistab.get_selection(), start=0): 
+            name_without_extension, _ = os.path.splitext(f"{file.basename}")
+
+            command = f"ffmpeg -i {file.dirname}/'{file.basename}' -vcodec libx265 -crf 28 {name_without_extension}_reduced.mp4"
+            # note: I shoudn't use & at the end, because this creates a new thread and the ring sound isn't work well.
+            command += " > /dev/null 2>&1" # send the output to /dev/null
+
+            #process1 = subprocess.Popen(command, shell=True) # detached way
+            #self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE) # chatgpt said that the 2nd and 3rd parameters are innecesary and cand make problems
+            self.fm.execute_command(command)
+
+
+    def ring_sound(self, t1):
+        t1.join()
+        import subprocess
+        end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
+        #process2 = subprocess.Popen(end_sound, shell=True) # detached way
+        self.fm.execute_command(end_sound, universal_newlines=True, stdout=subprocess.PIPE)
+
+
+    def execute(self):
+        from ranger.core.loader import Loader
+        import threading
+        t1 = threading.Thread(target=self.loop_through_all_files)
+        t1.daemon = True
+        t2 = threading.Thread(target=self.ring_sound, args=(t1,))
+        t1.start()
+        t2.start()
+
+
