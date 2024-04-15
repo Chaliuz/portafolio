@@ -81,6 +81,18 @@ case "$extension" in
     pdf)
         try pdftotext -l 10 -nopgbrk -q "$path" - && \
             { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
+        
+    # application/pdf:
+    # Note: I copied this code from a webpage
+    # I installed this command "yay pdftoppm" and this code doesn't work yet.
+    # pdf)
+    #     pdftoppm -f l -l 1\
+    #         -scale-to-x "${DEFAULT_SIZE%x*}" \
+    #         -scale-to-y -1 \
+    #         -singlefile \
+    #         -jpeg -tiffcompression jpeg \
+    #         -- "${FILE_PATH}" "${IMAGE_CACHE_PATH%.*}" \
+    #       && exit 6 || exit 1;;
     # BitTorrent Files
     torrent)
         try transmission-show "$path" && { dump | trim; exit 5; } || exit 1;;

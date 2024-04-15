@@ -72,6 +72,37 @@ class extract_here(Command):
         obj.signal_bind('after', refresh)
         self.fm.loader.add(obj)
 
+from ranger.core.loader import CommandLoader
+
+class compress(Command):
+    def execute(self):
+        """ Compress marked files to current directory """
+        cwd = self.fm.thisdir
+        marked_files = cwd.get_selection()
+
+        if not marked_files:
+            return
+
+        def refresh(_):
+            cwd = self.fm.get_directory(original_path)
+            cwd.load_content()
+
+        original_path = cwd.path
+        parts = self.line.split()
+        au_flags = parts[1:]
+
+        descr = "compressing files in: " + os.path.basename(parts[1])
+        obj = CommandLoader(args=['apack'] + au_flags + \
+                [os.path.relpath(f.path, cwd.path) for f in marked_files], descr=descr, read=True)
+
+        obj.signal_bind('after', refresh)
+        self.fm.loader.add(obj)
+
+    def tab(self, tabnum):
+        """ Complete with current folder name """
+
+        extension = ['.zip', '.tar.gz', '.rar', '.7z']
+        return ['compress ' + os.path.basename(self.fm.thisdir.path) + ext for ext in extension]
 
 # Chalius commands:
 class extract_audio(Command):
@@ -80,12 +111,25 @@ class extract_audio(Command):
 
     Extract audio from current video file with ffmpeg.
     """
+    #def execute(self):
+    #    import subprocess
+    #    this_file = self.fm.thisfile
+    #    command = f"ffmpeg -i {this_file.dirname}/'{this_file.basename}' -acodec libmp3lame {this_file.dirname}/'{this_file.basename}.mp3' &"
+    #    #self.fm.notify(f"Path del archivo: {this_file.dirname}/'{this_file.basename}'")
+
+    #    self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
+
     def execute(self):
         import subprocess
-        this_file = self.fm.thisfile
-        command="ffmpeg -i "+ this_file.path +" -acodec libmp3lame audio.mp3"
 
-        self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
+        #for file in self.fm.env.get_selection():
+        for file in self.fm.thistab.get_selection(): 
+            #command = f"ffmpeg -i '{file.path}' -acodec libmp3lame '{file.path}.mp3' &"
+            command = f"ffmpeg -i {file.dirname}/'{file.basename}' -acodec libmp3lame {file.dirname}/'{file.basename}.mp3'"
+            #self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
+            #print(f"hello: {file.dirname}")
+            process = subprocess.Popen(command, shell=True) # detached way
+
 
 class flip_horizontally_old(Command):
     """
@@ -250,3 +294,16 @@ class echo(Command):
 
     def execute(self):
         self.fm.notify(self.rest(1))
+
+class reduce_video_size(Command):
+
+    def execute(self):
+        import subprocess
+
+        for file in self.fm.thistab.get_selection(): 
+            name_without_extension, _ = os.path.splitext(f"{file.basename}")
+            #self.fm.notify(f"output: {file.basename}")
+
+            end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
+            command = f"ffmpeg -i {file.dirname}/'{file.basename}' -vcodec libx265 -crf 28 {name_without_extension}_reduced.mp4 && {end_sound}"
+            process = subprocess.Popen(command, shell=True) # detached way
