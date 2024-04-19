@@ -295,35 +295,6 @@ class echo(Command):
     def execute(self):
         self.fm.notify(self.rest(1))
 
-class reduce_video_size(Command):
-
-
-    #end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
-    #command = f"ffmpeg -i {file.dirname}/'{file.basename}' -vcodec libx265 -crf 28 {name_without_extension}_reduced.mp4 && {end_sound}"
-    #self.fm.notify(f"output: {index}")
-
-    # First version that works more and less
-    # 
-    """
-    def execute(self):
-        import subprocess
-
-        #for file in self.fm.thistab.get_selection(): 
-        for index, file in enumerate(self.fm.thistab.get_selection(), start=0): 
-            name_without_extension, _ = os.path.splitext(f"{file.basename}")
-
-            command = f"ffmpeg -i {file.dirname}/'{file.basename}' -vcodec libx265 -crf 28 {name_without_extension}_reduced.mp4"
-            process1 = subprocess.Popen(command, shell=True) # detached way
-            if index == len(self.fm.thistab.get_selection())-1:
-                #process1.wait()
-                stdout, stderr = process1.communicate()
-                end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
-                process2 = subprocess.Popen(end_sound, shell=True) # detached way
-
-                #self.fm.notify(f"output: {index}")
-    """
-
-    # ---------------------------------------------------
 
 class reduce_video_size(Command):
     # Note: I must press enter after run the command in order to watch again ranger interface.
