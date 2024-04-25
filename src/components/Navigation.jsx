@@ -41,7 +41,7 @@ const Navigation = () => {
             <NavbarBrand
               className="mr-lg-5"
               to="/"
-              // tag={Link} //TODO
+            // tag={Link} //TODO
             >
               <h2 className="text-white" id="nav-title">
                 {greetings.name}
@@ -79,15 +79,27 @@ const Navigation = () => {
                 </Row>
               </div>
               <Nav className="align-items-lg-center ml-lg-auto" navbar>
+                {/* <NavItem> */}
+                {/*   <NavLink */}
+                {/*     className="nav-link-icon" */}
+                {/*     href={socialLinks.facebook} */}
+                {/*     target="_blank" */}
+                {/*   > */}
+                {/*     <i className="fa fa-facebook-square" /> */}
+                {/*     <span className="nav-link-inner--text d-lg-none ml-2"> */}
+                {/*       Facebook */}
+                {/*     </span> */}
+                {/*   </NavLink> */}
+                {/* </NavItem> */}
                 <NavItem>
                   <NavLink
                     className="nav-link-icon"
-                    href={socialLinks.facebook}
+                    href={socialLinks.linkedin}
                     target="_blank"
                   >
-                    <i className="fa fa-facebook-square" />
+                    <i className="fa fa-linkedin" />
                     <span className="nav-link-inner--text d-lg-none ml-2">
-                      Facebook
+                      Linkedin
                     </span>
                   </NavLink>
                 </NavItem>
@@ -100,18 +112,6 @@ const Navigation = () => {
                     <i className="fa fa-github" />
                     <span className="nav-link-inner--text d-lg-none ml-2">
                       Github
-                    </span>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    className="nav-link-icon"
-                    href={socialLinks.linkedin}
-                    target="_blank"
-                  >
-                    <i className="fa fa-linkedin" />
-                    <span className="nav-link-inner--text d-lg-none ml-2">
-                      Linkedin
                     </span>
                   </NavLink>
                 </NavItem>

@@ -2,6 +2,8 @@ import emoji from "react-easy-emoji";
 
 import connecttix from "./assets/img/icons/common/connecttix.jpg";
 import logo_app_lecturapp from "./assets/img/icons/common/logo_app_lecturapp.png";
+import san_pablo_logo from "./assets/img/icons/common/san_pablo_logo.png";
+import practical_trading_icon from "./assets/img/icons/common/practical_trading_icon.png";
 
 import android_logo from "./assets/img/icons/skills/android_logo.png";
 import aws_logo from "./assets/img/icons/skills/aws_logo.png";
@@ -74,12 +76,12 @@ export const contact = {};
 
 export const socialLinks = {
   // facebook: "https://www.facebook.com/1hanzla100",
-  facebook: "https://www.facebook.com/gonzalo.quispefernandez/",
+  // facebook: "https://www.facebook.com/gonzalo.quispefernandez/",
   // instagram: "https://www.instagram.com/1hanzla100",
   // twitter: "https://twitter.com/1hanzla100",
+  linkedin: "https://www.linkedin.com/in/gquispe/",
   github: "https://github.com/Chalius",
   // linkedin: "https://www.linkedin.com/in/hanzla-tauqeer-0869281ba/",
-  linkedin: "https://www.linkedin.com/in/gquispe/",
   telegram: "https://t.me/chalius",
 };
 
@@ -374,28 +376,40 @@ export const skillsSection = {
 
 export const SkillBars = [
   {
-    Stack: "React y react-native",
+    Stack: "React y NextJS",
     progressPercentage: "80",
   },
   {
-    Stack: "Nextjs", //Insert stack or technology you have experience in
-    progressPercentage: "60", //Insert relative proficiency in percentage
+    Stack: "react-native",
+    progressPercentage: "80",
   },
   {
     Stack: "Backend con django",
-    progressPercentage: "50",
-  },
-  {
-    Stack: "Redux",
-    progressPercentage: "70",
-  },
-  {
-    Stack: "Flex-box",
     progressPercentage: "60",
   },
+  {
+    Stack: "AWS",
+    progressPercentage: "60",
+  },
+  {
+    Stack: "Docker y kubernetes",
+    progressPercentage: "50",
+  },
+  // {
+  //   Stack: "Redux",
+  //   progressPercentage: "70",
+  // },
+  // {
+  //   Stack: "Flex-box",
+  //   progressPercentage: "60",
+  // },
   // {
   //   Stack: "Emprendimiento",
   //   progressPercentage: "60",
+  // },
+  // {
+  //   Stack: "Nextjs", //Insert stack or technology you have experience in
+  //   progressPercentage: "60", //Insert relative proficiency in percentage
   // },
 ];
 
@@ -502,12 +516,11 @@ export const educationInfo = [
 
 export const experience = [
   {
-    role: "Desarrollo móvil multiplataforma",
-    company: "Emprendimiento propio",
+    role: "Aplicativo móvil",
+    company: "Startup",
     companylogo: logo_app_lecturapp,
-
-    date: "Enero 2021 – Actualidad",
-    desc: "Desorrolló a medio tiempo un aplicativo multiplataforma usando React-Native. Esta app busca que a los niños les agrade la lectura.",
+    date: "Enero 2021 – Febrero 2022",
+    desc: "Desorrollé un aplicativo multiplataforma usando React-Native. Esta app busca que a los niños les agrade la lectura.",
   },
   {
     /* role: "software engineer",
@@ -524,7 +537,7 @@ export const experience = [
     companylogo: connecttix,
 
     date: "Noviembre 2019 – Febrero 2020",
-    desc: "Desarrolló de aplicativo Android para el control de gasolina de camiones.",
+    desc: "Desarrollé un aplicativo Android para el control de gasolina de camiones.",
     /* descbullets: [
       "lorem ipsum dolor sit amet, consdfgectetur adipiscing elit",
       "lorem ipsum dolor sit amet, consectetur adipiscing elit",
@@ -533,9 +546,16 @@ export const experience = [
   {
     role: "TI",
     company: "Clínica San Pablo",
-    // companylogo: connecttix,
+    companylogo: san_pablo_logo,
     date: "2022",
     desc: "La clínica San Pablo encargó un nuevo software para controlar las vacunas contra el COVID-19 de los trabajadores de la mina Quellaveco, por lo que me contrataron para apoyar en la implementación de dicho software.",
+  },
+  {
+    role: "Fullstack Developer",
+    company: "Practical trading pro",
+    companylogo: practical_trading_icon,
+    date: "2023",
+    desc: "Desarrollé el frontend y parte del backend de una plataforma web para hacer backtesting de trading.",
   },
   /* {
     role: "Software Engineer Intern",
@@ -590,17 +610,7 @@ import docker_logo2 from "../assets/img/icons/skills/docker_logo.png"; */
     name: "Robot Araña",
     desc: "Robot que se controla mediante internet desarrollado con Arduino que captura datos como: temperatura, humedad, etc. y se lo envía a un servidor para que los almacene.",
     technologies: ["Arduino", "Django", "Android"],
-    youtube: "vBdkIV7YfYU",
-    /* link: {
-      name: "hanzla",
-      url: "kasjfklsdjf",
-    }, */
-  },
-  {
-    name: "App para restaurante",
-    desc: "Aplicativo multiplataforma que sirve para realizar pedidos de comida.",
-    technologies: ["React-native", "Firebase"],
-    youtube: "5ebskOPeNFQ",
+    // youtube: "vBdkIV7YfYU",
     /* link: {
       name: "hanzla",
       url: "kasjfklsdjf",
@@ -616,5 +626,15 @@ import docker_logo2 from "../assets/img/icons/skills/docker_logo.png"; */
       name: "practical trading pro",
       url: "https://www.practicaltradingpro.com/",
     },
+  },
+  {
+    name: "App para restaurante",
+    desc: "Aplicativo multiplataforma que sirve para realizar pedidos de comida.",
+    technologies: ["React-native", "Firebase"],
+    // youtube: "5ebskOPeNFQ",
+    /* link: {
+      name: "hanzla",
+      url: "kasjfklsdjf",
+    }, */
   },
 ];
