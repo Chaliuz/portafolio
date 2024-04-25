@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://hanzla.ga"
   },
-  "homepage": "https://chalius.github.io/portafolio",
+  "homepage": "https://chaliuz.github.io/portafolio/build",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && gulp licenses",
