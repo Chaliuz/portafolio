@@ -22,52 +22,52 @@ const Skills = () => {
           <TechBranch title={"Backend"} skillsSection={skillsSection.softwareSkillsBackend} />
           <TechBranch title={"Devops"} skillsSection={skillsSection.softwareSkillsDevops} />
           <TechBranch title={"Others"} skillsSection={skillsSection.softwareSkillsOthers} />
-
         </div>
 
         <Row>
           <Col lg="6">
             <DisplayLottie animationData={webdev} />
           </Col>
-          <Col lg="6">
-            <Fade left duration={1000} distance="40px">
-              <div className="d-flex justify-content-center flex-wrap mb-5">
-                {/* {skillsSection.softwareSkills.map((skill) => { */}
-                {/*   return ( */}
-                {/*     <Fragment key={skill.skillName}> */}
-                {/*       <div */}
-                {/*         // className="icon icon-lg icon-shape shadow rounded-circle mb-5" */}
-                {/*         // className="icon icon-xl icon-shape shadow rounded-circle mb-5" */}
-                {/*         className="icon icon-xl  shadow rounded-circle mb-5" */}
-                {/*         id={skill.skillName} */}
-                {/*         style={{ margin: 4 }} */}
-                {/*       > */}
-                {/*         {skill.fontAwesomeClassname ? ( */}
-                {/*           <></> */}
-                {/*         ) : ( */}
-                {/*             <img */}
-                {/*               // className="iconify" */}
-                {/*               className=" bg-white rounded-circle mb--1 img-center img-fluid shadow-lg " */}
-                {/*               // data-icon={skill.image} */}
-                {/*               src={skill.image} */}
-                {/*               alt="imageng" */}
-                {/*             // data-inline="false" */}
-                {/*             /> */}
-                {/*           )} */}
-                {/*       </div> */}
-                {/*       <UncontrolledTooltip */}
-                {/*         delay={0} */}
-                {/*         placement="bottom" */}
-                {/*         target={skill.skillName} */}
-                {/*       > */}
-                {/*         {skill.skillName} */}
-                {/*       </UncontrolledTooltip> */}
-                {/*     </Fragment> */}
-                {/*   ); */}
-                {/* })} */}
-              </div>
-            </Fade>
-            <div>
+          <Col lg="6" className="flex flex-col justify-center align-center" >
+            {/* <Fade left duration={1000} distance="40px"> */}
+            {/*   <div className="d-flex justify-content-center flex-wrap mb-5"> */}
+            {/* {skillsSection.softwareSkills.map((skill) => { */}
+            {/*   return ( */}
+            {/*     <Fragment key={skill.skillName}> */}
+            {/*       <div */}
+            {/*         // className="icon icon-lg icon-shape shadow rounded-circle mb-5" */}
+            {/*         // className="icon icon-xl icon-shape shadow rounded-circle mb-5" */}
+            {/*         className="icon icon-xl  shadow rounded-circle mb-5" */}
+            {/*         id={skill.skillName} */}
+            {/*         style={{ margin: 4 }} */}
+            {/*       > */}
+            {/*         {skill.fontAwesomeClassname ? ( */}
+            {/*           <></> */}
+            {/*         ) : ( */}
+            {/*             <img */}
+            {/*               // className="iconify" */}
+            {/*               className=" bg-white rounded-circle mb--1 img-center img-fluid shadow-lg " */}
+            {/*               // data-icon={skill.image} */}
+            {/*               src={skill.image} */}
+            {/*               alt="imageng" */}
+            {/*             // data-inline="false" */}
+            {/*             /> */}
+            {/*           )} */}
+            {/*       </div> */}
+            {/*       <UncontrolledTooltip */}
+            {/*         delay={0} */}
+            {/*         placement="bottom" */}
+            {/*         target={skill.skillName} */}
+            {/*       > */}
+            {/*         {skill.skillName} */}
+            {/*       </UncontrolledTooltip> */}
+            {/*     </Fragment> */}
+            {/*   ); */}
+            {/* })} */}
+            {/*   </div> */}
+            {/* </Fade> */}
+
+            <div className="mt-8" >
               {skillsSection.skills.map((skill) => {
                 return <p key={skill}>{skill}</p>;
               })}
