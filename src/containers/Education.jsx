@@ -32,11 +32,11 @@ const Education = () => {
         {/* new */}
         {/* --------------------------------------------------- */}
         {/* <div className="d-flex flex-wrap align-items-stretch"> */}
-        <div style={{display:"flex", flexWrap:"wrap",margin:"1rem auto", justifyContent:"center"}}>
+        <div style={{ display: "flex", flexWrap: "wrap", margin: "1rem auto", justifyContent: "center" }}>
           {educationInfo.map((info) => {
             return (
               // <div className="w-25 m-2" key={info.schoolName}> 
-              <div style={{width:"20rem", margin:"0.5rem"}} key={info.schoolName}>
+              <div style={{ width: "20rem", margin: "0.5rem" }} key={info.schoolName}>
                 <EdutionCard education={info} />
               </div>
             );

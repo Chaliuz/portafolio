@@ -17,7 +17,7 @@ const App = () => {
     //       path="/"
     //       exact
     //       render={(props) => (
-    <div style={{display:"flex", flexDirection:"column"}}>
+    <div style={{ display: "flex", flexDirection: "column" }}>
       <Navigation />
       <Greetings />
       <Skills />

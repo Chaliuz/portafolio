@@ -21,6 +21,18 @@ import redux_logo from "./assets/img/icons/skills/redux_logo.png";
 import redux_persist_logo from "./assets/img/icons/skills/redux_persist_logo.png";
 import scrum_logo from "./assets/img/icons/skills/scrum_logo.png";
 import django_logo from "./assets/img/icons/skills/django.png";
+import databases_logo from "./assets/img/icons/skills/databases_logo.jpg";
+import mondodb_logo from "./assets/img/icons/skills/mondodb_logo.jpg";
+import kubernetes_logo from "./assets/img/icons/skills/kubernetes_logo.jpg";
+import python_logo from "./assets/img/icons/skills/python_logo.jpg";
+import html_logo from "./assets/img/icons/skills/html_logo.jpg";
+import tailwind_logo from "./assets/img/icons/skills/tailwind_logo.jpg";
+import english_logo from "./assets/img/icons/skills/english_logo.jpg";
+import figma_logo from "./assets/img/icons/skills/figma_logo.jpg";
+import inkscape_logo from "./assets/img/icons/skills/inkscape_logo.jpg";
+import griglayout_logo from "./assets/img/icons/skills/griglayout_logo.jpg";
+
+
 
 // image projects:
 import adn1 from "./assets/img/icons/projects/ADNVoladura/adn1.png";
@@ -73,7 +85,7 @@ export const socialLinks = {
 
 export const skillsSection = {
   // title: "What I do",
-  title: "Lo que hago",
+  title: "Tecnologías que uso",
   // subTitle: "CRAZY FULL STACK DEVELOPER WHO WANTS TO EXPLORE EVERY TECH STACK",
   subTitle:
     "DESARROLLADOR FULLSTACK QUE QUIERE CONVERTIRSE EN EXPERTO EN LAS TECNOLOGÍAS REACT, REACT-NATIVE Y DJANGO.",
@@ -93,6 +105,131 @@ export const skillsSection = {
     emoji("⚡ Integración de servicios de terceros como Firebase / AWS / Google cloud"),
     // emoji("⚡ Tengo conocimientos sobre temas de emprendimiento y habilidades de liderazgo"),
     emoji("⚡ Tengo interes en los temas relacionados con emprendimiento"),
+  ],
+
+  softwareSkillsFrontend: [
+    {
+      skillName: "React y Nextjs",
+      // fontAwesomeClassname: "vscode-icons:file-type-reactjs",
+      image: react_logo,
+    },
+    {
+      skillName: "React-native",
+      image: react_native_logo,
+      url: "https://drive.google.com/file/d/1xrcM_sROi9tQC7OKSPpP9r3lXBycBZgx/view?usp=sharing"
+    },
+    {
+      skillName: "Arquitectura hexagonal",
+      image: react_native_logo,
+    },
+    {
+      skillName: "Redux",
+      image: redux_logo,
+    },
+    {
+      skillName: "HTML y CSS",
+      image: html_logo,
+      url: "https://drive.google.com/file/d/11YtF_azFSccoxN8l8SLE6rgzTW9J9dKh/view?usp=sharing"
+    },
+    // {
+    //   skillName: "redux-persist",
+    //   image: redux_persist_logo,
+    // },
+    {
+      skillName: "Tailwind CSS",
+      image: tailwind_logo,
+    },
+    {
+      skillName: "CSS Flexbox",
+      // fontAwesomeClassname: "vscode-icons:file-type-css",
+      image: flexbox_logo,
+    },
+    {
+      skillName: "CSS Grid layout",
+      image: griglayout_logo,
+      url: "https://drive.google.com/file/d/1Gd_MIGBignq0HADgYVyKY2MbeM6Hl9k4/view?usp=sharing"
+    },
+    // {
+    //   skillName: "MaterialUI",
+    //   image: materialui_logo,
+    // },
+    {
+      skillName: "Jest",
+      image: jest_logo,
+      url: "https://drive.google.com/file/d/1Q3x2D7NM_F9aQGrDz-5VvwJSqKWl7v4s/view?usp=sharing"
+    },
+  ],
+
+  softwareSkillsBackend: [
+    {
+      skillName: "Django",
+      image: django_logo,
+      url: "https://drive.google.com/file/d/1ZNReIFabsWyGHriLPYZ5lw0d8ENEwhd0/view?usp=sharing"
+    },
+    {
+      skillName: "Django REST Framework",
+      image: django_logo,
+    },
+    {
+      skillName: "Bases de datos relacionales",
+      image: databases_logo,
+    },
+    {
+      skillName: "MongoDB",
+      image: mondodb_logo,
+
+    },
+  ],
+
+  softwareSkillsDevops: [
+    {
+      skillName: "AWS cloud practitioner certified",
+      image: aws_logo,
+      url: "https://www.credly.com/badges/512f3591-5771-44ef-9618-55a029fb0f55/public_url",
+    },
+    {
+      skillName: "Docker",
+      image: docker_logo,
+    },
+    {
+      skillName: "Kubernetes",
+      image: kubernetes_logo,
+    },
+    {
+      skillName: "Python",
+      image: python_logo,
+    },
+    {
+      skillName: "Linux",
+      image: linux_logo,
+    },
+  ],
+
+  softwareSkillsOthers: [
+    {
+      skillName: "Git y github",
+      image: nvim_logo,
+    },
+    {
+      skillName: "Inglés intermedio",
+      image: english_logo,
+    },
+    {
+      skillName: "Figma",
+      image: figma_logo,
+    },
+    {
+      skillName: "Inkscape",
+      image: inkscape_logo,
+    },
+    {
+      skillName: "SCRUM",
+      image: scrum_logo,
+    },
+    {
+      skillName: "NeoVim",
+      image: nvim_logo,
+    },
   ],
 
   softwareSkills: [
