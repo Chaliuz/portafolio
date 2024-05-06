@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/portafolio/build/static/css/main.38bf4746.chunk.css",
-    "main.js": "/portafolio/build/static/js/main.f3978f7c.chunk.js",
-    "main.js.map": "/portafolio/build/static/js/main.f3978f7c.chunk.js.map",
+    "main.js": "/portafolio/build/static/js/main.aa35cca3.chunk.js",
+    "main.js.map": "/portafolio/build/static/js/main.aa35cca3.chunk.js.map",
     "runtime-main.js": "/portafolio/build/static/js/runtime-main.e7cc3e31.js",
     "runtime-main.js.map": "/portafolio/build/static/js/runtime-main.e7cc3e31.js.map",
     "static/css/2.34b29efe.chunk.css": "/portafolio/build/static/css/2.34b29efe.chunk.css",
@@ -49,13 +49,14 @@
     "static/media/redux_logo.85bb3f70.png": "/portafolio/build/static/media/redux_logo.85bb3f70.png",
     "static/media/redux_persist_logo.06c8d669.png": "/portafolio/build/static/media/redux_persist_logo.06c8d669.png",
     "static/media/scrum_logo.5fd1fc77.png": "/portafolio/build/static/media/scrum_logo.5fd1fc77.png",
-    "static/media/tailwind_logo.889bd290.jpg": "/portafolio/build/static/media/tailwind_logo.889bd290.jpg"
+    "static/media/tailwind_logo.889bd290.jpg": "/portafolio/build/static/media/tailwind_logo.889bd290.jpg",
+    "static/media/terraform_logo.06d226ce.png": "/portafolio/build/static/media/terraform_logo.06d226ce.png"
   },
   "entrypoints": [
     "static/js/runtime-main.e7cc3e31.js",
     "static/css/2.34b29efe.chunk.css",
     "static/js/2.81df3178.chunk.js",
     "static/css/main.38bf4746.chunk.css",
-    "static/js/main.f3978f7c.chunk.js"
+    "static/js/main.aa35cca3.chunk.js"
   ]
 }

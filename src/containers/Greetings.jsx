@@ -43,13 +43,25 @@ const Greetings = () => {
                       <Button
                         className="btn-white btn-icon mb-3 mb-sm-0 ml-1"
                         color="default"
-                        href={greetings.resumeLink}
+                        href={greetings.resumeLink_fullstack}
                         target="_blank"
                       >
                         <span className="btn-inner--icon mr-1">
                           <i className="fa fa-file" />
                         </span>
-                        <span className="btn-inner--text">Revisa mi CV</span>
+                        <span className="btn-inner--text">CV fullstack</span>
+                      </Button>
+
+                      <Button
+                        className="btn-white btn-icon mb-3 mb-sm-0 ml-1"
+                        color="default"
+                        href={greetings.resumeLink_devops}
+                        target="_blank"
+                      >
+                        <span className="btn-inner--icon mr-1">
+                          <i className="fa fa-file" />
+                        </span>
+                        <span className="btn-inner--text">CV devops</span>
                       </Button>
                     </div>
                   </Col>

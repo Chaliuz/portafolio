@@ -33,6 +33,7 @@ import english_logo from "./assets/img/icons/skills/english_logo.jpg";
 import figma_logo from "./assets/img/icons/skills/figma_logo.jpg";
 import inkscape_logo from "./assets/img/icons/skills/inkscape_logo.jpg";
 import griglayout_logo from "./assets/img/icons/skills/griglayout_logo.jpg";
+import terraform_logo from "./assets/img/icons/skills/terraform_logo.png";
 
 
 
@@ -64,8 +65,10 @@ export const greetings = {
     // "Soy un desorrallor de software Fullstack apasionado por la tecnología, con habilidades de liderazgo, enfocado en las tecnologías de React, React-Native y Django.",
     "Soy un desorrallor de software Fullstack apasionado por la tecnología, enfocado en las tecnologías de React (con sus variantes), Django y AWS",
   // resumeLink: "https://cv.hanzla.ga",
-  resumeLink:
+  resumeLink_fullstack:
     "https://drive.google.com/file/d/1yJchLoAAhApJPkhsSAymTNkwH0QKDXXE/view?usp=sharing",
+  resumeLink_devops:
+    "https://drive.google.com/file/d/1nRd99RgaGuozuSvVca5GjJowOaAn-uZt/view?usp=sharing",
 };
 
 export const openSource = {
@@ -208,6 +211,11 @@ export const skillsSection = {
       skillName: "Linux",
       image: linux_logo,
     },
+    {
+      skillName: "Terraform",
+      image: terraform_logo,
+    },
+
   ],
 
   softwareSkillsOthers: [
