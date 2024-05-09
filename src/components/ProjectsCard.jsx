@@ -13,9 +13,9 @@ const ProjectsCard = ({ data }) => {
   return (
     <Col lg="6">
       <Fade bottom duration={1000} distance="40px">
-        <Card className="shadow-lg--hover shadow mt-4">
+        <Card className="shadow-lg--hover shadow mt-4 ">
           <CardBody>
-            <div className="d-flex px-3">
+            <div className="d-flex px-3 min-h-[25rem]" style={{ minHeight: "30rem" }}>
               <div className="pl-4">
                 <h5 className="text-info">{data.name}</h5>
                 <p className="description mt-3">{data.desc}</p>

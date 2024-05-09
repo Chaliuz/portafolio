@@ -56,6 +56,15 @@ import lecturapp4 from "./assets/img/icons/projects/lecturapp/lecturapp7.png";
 import lecturapp5 from "./assets/img/icons/projects/lecturapp/lecturapp8.png";
 import lecturapp6 from "./assets/img/icons/projects/lecturapp/lecturapp11.png";
 
+import isd1 from "./assets/img/icons/projects/isd_indice_del_desempeño_del_supervisor/img1.jpg";
+import isd2 from "./assets/img/icons/projects/isd_indice_del_desempeño_del_supervisor/img2.jpg";
+import isd3 from "./assets/img/icons/projects/isd_indice_del_desempeño_del_supervisor/img3.jpg";
+import isd4 from "./assets/img/icons/projects/isd_indice_del_desempeño_del_supervisor/img4.jpg";
+import isd5 from "./assets/img/icons/projects/isd_indice_del_desempeño_del_supervisor/img5.jpg";
+import isd6 from "./assets/img/icons/projects/isd_indice_del_desempeño_del_supervisor/img6.jpg";
+import isd7 from "./assets/img/icons/projects/isd_indice_del_desempeño_del_supervisor/img7.jpg";
+import isd8 from "./assets/img/icons/projects/isd_indice_del_desempeño_del_supervisor/img8.jpg";
+
 export const greetings = {
   name: "Gonzalo Quispe Fernandez",
   title: "¿Que tal?, yo soy Gonzalo",
@@ -582,6 +591,53 @@ export const experience = [
 
 export const projects = [
   {
+    name: "Practical trading pro.",
+    desc: "Página web informativa sobre una plataforma de trading.",
+    technologies: ["React", "Nextjs", "Tailwind CSS", "Flexbox"],
+    // 
+    // youtube: "5ebskOPeNFQ",
+    link: {
+      name: "practical trading pro",
+      url: "https://www.practicaltradingpro.com/",
+    },
+  },
+  {
+    name: "ADNVoladura",
+    desc: "Aplicativo móvil que resuelve complicadas formulas matemáticas para facilitar la tarea de operadores de minería a cielo abierto.",
+    technologies: ["React-Native", "Redux", "Redux-persist"],
+    imgs_for_slider: [
+      { source: adn1 },
+      { source: adn2 },
+      { source: adn3 },
+      { source: adn4 },
+      { source: adn6 },
+      { source: adn7 },
+      { source: adn10 },
+      { source: adn12 },
+    ],
+  },
+  {
+    name: "ISD índice de desempeño del supervisor",
+    desc: "Aplicativo móvil multiplataforma para registrar el desempeño del supervisor en la empresa Seriman S.A.C.",
+    technologies: [
+      "React-Native",
+      "Django rest framework",
+      "Tailwind",
+      "Figma",
+    ],
+    imgs_for_slider: [
+      { source: isd1 },
+      { source: isd2 },
+      { source: isd3 },
+      { source: isd4 },
+      { source: isd5 },
+      { source: isd6 },
+      { source: isd7 },
+      { source: isd8 },
+    ],
+  },
+
+  {
     name: "LecturApp",
     desc: "Emprendimiento que desarrolla un aplicativo móvil que consulta la información en un backend desarrollado con node.js. ",
     technologies: [
@@ -606,21 +662,6 @@ import aws_logo2 from "../assets/img/icons/skills/aws_logo.png";
 import docker_logo2 from "../assets/img/icons/skills/docker_logo.png"; */
 
   {
-    name: "ADNVoladura",
-    desc: "Aplicativo móvil que resuelve complicadas formulas matemáticas para facilitar la tarea de operadores de minería a cielo abierto.",
-    technologies: ["React-Native", "Redux", "Redux-persist"],
-    imgs_for_slider: [
-      { source: adn1 },
-      { source: adn2 },
-      { source: adn3 },
-      { source: adn4 },
-      { source: adn6 },
-      { source: adn7 },
-      { source: adn10 },
-      { source: adn12 },
-    ],
-  },
-  {
     name: "Robot Araña",
     desc: "Robot que se controla mediante internet desarrollado con Arduino que captura datos como: temperatura, humedad, etc. y se lo envía a un servidor para que los almacene.",
     technologies: ["Arduino", "Django", "Android"],
@@ -629,17 +670,6 @@ import docker_logo2 from "../assets/img/icons/skills/docker_logo.png"; */
       name: "hanzla",
       url: "kasjfklsdjf",
     }, */
-  },
-  {
-    name: "Practical trading pro.",
-    desc: "Página web informativa sobre una plataforma de trading.",
-    technologies: ["React", "nextjs", "tailwind css", "flexbox"],
-    // 
-    // youtube: "5ebskOPeNFQ",
-    link: {
-      name: "practical trading pro",
-      url: "https://www.practicaltradingpro.com/",
-    },
   },
   {
     name: "App para restaurante",
