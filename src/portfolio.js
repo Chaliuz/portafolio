@@ -34,6 +34,7 @@ import figma_logo from "./assets/img/icons/skills/figma_logo.jpg";
 import inkscape_logo from "./assets/img/icons/skills/inkscape_logo.jpg";
 import griglayout_logo from "./assets/img/icons/skills/griglayout_logo.jpg";
 import terraform_logo from "./assets/img/icons/skills/terraform_logo.png";
+import jenkins_logo from "./assets/img/icons/skills/jenkins_logo.png";
 
 
 
@@ -215,6 +216,11 @@ export const skillsSection = {
       skillName: "Terraform",
       image: terraform_logo,
     },
+    {
+      skillName: "jenkins",
+      image: jenkins_logo,
+    },
+
 
   ],
 
