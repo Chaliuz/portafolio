@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/portafolio/build/static/css/main.38bf4746.chunk.css",
-    "main.js": "/portafolio/build/static/js/main.aa35cca3.chunk.js",
-    "main.js.map": "/portafolio/build/static/js/main.aa35cca3.chunk.js.map",
+    "main.js": "/portafolio/build/static/js/main.f55e9a5c.chunk.js",
+    "main.js.map": "/portafolio/build/static/js/main.f55e9a5c.chunk.js.map",
     "runtime-main.js": "/portafolio/build/static/js/runtime-main.e7cc3e31.js",
     "runtime-main.js.map": "/portafolio/build/static/js/runtime-main.e7cc3e31.js.map",
     "static/css/2.34b29efe.chunk.css": "/portafolio/build/static/css/2.34b29efe.chunk.css",
@@ -30,6 +30,7 @@
     "static/media/font-awesome.min.css": "/portafolio/build/static/media/fontawesome-webfont.f691f37e.woff",
     "static/media/git_logo.43ed40b4.png": "/portafolio/build/static/media/git_logo.43ed40b4.png",
     "static/media/google_cloud_logo.a32fa14f.png": "/portafolio/build/static/media/google_cloud_logo.a32fa14f.png",
+    "static/media/jenkins_logo.55814fe4.png": "/portafolio/build/static/media/jenkins_logo.55814fe4.png",
     "static/media/jest_logo.53bcb376.png": "/portafolio/build/static/media/jest_logo.53bcb376.png",
     "static/media/lecturapp1.bf9769be.png": "/portafolio/build/static/media/lecturapp1.bf9769be.png",
     "static/media/lecturapp11.cc4efcaa.png": "/portafolio/build/static/media/lecturapp11.cc4efcaa.png",
@@ -57,6 +58,6 @@
     "static/css/2.34b29efe.chunk.css",
     "static/js/2.81df3178.chunk.js",
     "static/css/main.38bf4746.chunk.css",
-    "static/js/main.aa35cca3.chunk.js"
+    "static/js/main.f55e9a5c.chunk.js"
   ]
 }
