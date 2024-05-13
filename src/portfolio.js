@@ -35,8 +35,7 @@ import inkscape_logo from "./assets/img/icons/skills/inkscape_logo.jpg";
 import griglayout_logo from "./assets/img/icons/skills/griglayout_logo.jpg";
 import terraform_logo from "./assets/img/icons/skills/terraform_logo.png";
 import jenkins_logo from "./assets/img/icons/skills/jenkins_logo.png";
-
-
+import bash_logo from "./assets/img/icons/skills/bash_logo.png";
 
 // image projects:
 import adn1 from "./assets/img/icons/projects/ADNVoladura/adn1.png";
@@ -226,9 +225,14 @@ export const skillsSection = {
       image: terraform_logo,
     },
     {
-      skillName: "jenkins",
+      skillName: "Jenkins",
       image: jenkins_logo,
     },
+    {
+      skillName: "Bash scripting",
+      image: bash_logo,
+    },
+
 
 
   ],
