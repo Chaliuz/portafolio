@@ -587,6 +587,43 @@ class convert_from_opus_to_mp3(Command):
         t2.start()
         self.fm.notify("All opus files have been converted to mp3 files.", bad=False)
 
+class convert_from_opus_to_m4a(Command):
+    # Note: I must press enter after run the command in order to watch again ranger interface.
+
+    def loop_through_all_files(self):
+        # import subprocess
+        for index, file in enumerate(self.fm.thistab.get_selection(), start=0): 
+            name_without_extension, _ = os.path.splitext(f"{file.basename}")
+
+            # command example: ffmpeg -i input.opus -c:a aac output.m4a
+            command = f"ffmpeg -i {file.dirname}/'{file.basename}' -c:a aac '{name_without_extension}.m4a'"
+
+            # note: I shoudn't use & at the end, because this creates a new thread and the ring sound isn't work well.
+            command += " > /dev/null 2>&1" # send the output to /dev/null
+
+            #process1 = subprocess.Popen(command, shell=True) # detached way
+            #self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE) # chatgpt said that the 2nd and 3rd parameters are innecesary and cand make problems
+            self.fm.execute_command(command)
+
+
+    def ring_sound(self, t1):
+        t1.join()
+        import subprocess
+        end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
+        #process2 = subprocess.Popen(end_sound, shell=True) # detached way
+        self.fm.execute_command(end_sound, universal_newlines=True, stdout=subprocess.PIPE)
+
+
+    def execute(self):
+        from ranger.core.loader import Loader
+        import threading
+        t1 = threading.Thread(target=self.loop_through_all_files)
+        t1.daemon = True
+        t2 = threading.Thread(target=self.ring_sound, args=(t1,))
+        t1.start()
+        t2.start()
+        self.fm.notify("All opus files have been converted to .m4a files.", bad=False)
+
 class zip_playstation_file_in_local_disk(Command):
     # Note: I must press enter after run the command in order to watch again ranger interface.
 
@@ -670,7 +707,6 @@ class add_name_text_to_image(Command):
 
     def __add_text_to_image(self, image_path, output_path, text, font_path=None, font_size=55):
         import platform
-        self.fm.notify(f"output_path: {output_path}", bad=False)
         try:
             # Open the image
             image = Image.open(image_path)
