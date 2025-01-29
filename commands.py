@@ -766,3 +766,45 @@ class add_name_text_to_image(Command):
         t1.start()
         t2.start()
         # self.fm.notify("added the name to the image", bad=False)
+
+class convert_pdf_to_jpeg(Command):
+    """
+    This command uses pdftoppm linux command.
+        - NOTE: this command has an little error, I must press <enter> after I sended the command.
+    """
+
+    def loop_through_all_files(self):
+        # import subprocess
+        for index, file in enumerate(self.fm.thistab.get_selection(), start=0): 
+            name_without_extension, _ = os.path.splitext(f"{file.basename}")
+
+            # command example: ffmpeg -i input.opus -c:a aac output.m4a
+            # command = f"pdftoppm {file.dirname}/'{file.basename}' '{name_without_extension}.jpeg' -jpeg"
+            command = f"pdftoppm {file.dirname}/'{file.basename}' {file.dirname}/'{name_without_extension}' -jpeg"
+            # command that works: pdftoppm nov-2024.pdf nov-2024.jpeg -jpeg
+
+            # self.fm.notify(f"pdftoppm {file.dirname}/'{file.basename}' {file.dirname}/'{name_without_extension}.jpeg' -jpeg", bad=False)
+
+            # note: I shoudn't use & at the end, because this creates a new thread and the ring sound isn't work well.
+            command += " > /dev/null 2>&1" # send the output to /dev/null
+
+            self.fm.execute_command(command)
+
+
+    def ring_sound(self, t1):
+        t1.join()
+        import subprocess
+        end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
+        #process2 = subprocess.Popen(end_sound, shell=True) # detached way
+        self.fm.execute_command(end_sound, universal_newlines=True, stdout=subprocess.PIPE)
+
+
+    def execute(self):
+        from ranger.core.loader import Loader
+        import threading
+        t1 = threading.Thread(target=self.loop_through_all_files)
+        t1.daemon = True
+        t2 = threading.Thread(target=self.ring_sound, args=(t1,))
+        t1.start()
+        t2.start()
+        self.fm.notify("The pdf file was convert to jpeg.", bad=False)
