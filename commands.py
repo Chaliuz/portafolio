@@ -2,6 +2,8 @@ from ranger import MAX_RESTORABLE_TABS
 from ranger.api.commands import Command
 # from plugins.ranger_udisk_menu.mounter import mount
 from PIL import Image, ImageEnhance, ImageDraw, ImageFont
+import os
+import random
 
 class paste_as_root(Command):
 	def execute(self):
@@ -9,6 +11,62 @@ class paste_as_root(Command):
 			self.fm.execute_console('shell sudo mv %c .')
 		else:
 			self.fm.execute_console('shell sudo cp -r %c .')
+
+class Sounds:
+
+    start_sounds_path = "/home/chalius/Música/sounds/start_work"
+    end_sounds_path = "/home/chalius/Música/sounds/end_work"
+
+    def seleccionar_archivo_aleatorio(self, carpeta):
+        # Obtener una lista de todos los archivos en la carpeta especificada
+        archivos = [f for f in os.listdir(carpeta) if os.path.isfile(os.path.join(carpeta, f))]
+        
+        # Si hay archivos, seleccionar uno aleatorio
+        if archivos:
+            archivo_aleatorio = random.choice(archivos)
+            path = os.path.join(carpeta, archivo_aleatorio)
+            return path
+        else:
+            return None
+
+    def get_command_sound_start(self):
+        # import subprocess
+        random_sound_path = self.seleccionar_archivo_aleatorio(self.start_sounds_path)
+        command_sound = f"paplay {random_sound_path}" # warcraf3 orc nice song
+        return command_sound
+        # self.fm.execute_command(command_sound, universal_newlines=True, stdout=subprocess.PIPE)
+        # self.fm.execute_command("pkill paplay", universal_newlines=True, stdout=subprocess.PIPE)
+
+    def get_command_sound_end(self):
+        # t.join()
+        # import subprocess
+        # global end_sound
+        # self.fm.execute_command(end_sound_command, universal_newlines=True, stdout=subprocess.PIPE)
+        # self.fm.execute_command("pkill paplay", universal_newlines=True, stdout=subprocess.PIPE)
+
+        random_sound_path = self.seleccionar_archivo_aleatorio(self.end_sounds_path)
+        command_sound = f"paplay {random_sound_path}" # warcraf3 orc nice song
+        return command_sound
+
+def seleccionar_archivo_aleatorio(carpeta):
+    # Obtener una lista de todos los archivos en la carpeta especificada
+    archivos = [f for f in os.listdir(carpeta) if os.path.isfile(os.path.join(carpeta, f))]
+    
+    # Si hay archivos, seleccionar uno aleatorio
+    if archivos:
+        archivo_aleatorio = random.choice(archivos)
+        path = os.path.join(carpeta, archivo_aleatorio)
+        return path
+    else:
+        return None
+
+random_sound_path = seleccionar_archivo_aleatorio("/home/chalius/Música/sounds/start_work")
+# random_sound_path = "/home/chalius/Música/sounds/start_work/a_trabajar.mp3"
+# print(random_sound_path)
+start_sound_command = f"paplay {random_sound_path}" # warcraf3 orc nice song
+end_sound_command = "paplay /home/chalius/Música/sounds/end_work/trabajo_terminado_orco.mp3" # warcraf3 orc nice song
+
+
 
 class fzf_select(Command):
     """
@@ -271,11 +329,45 @@ class echo(Command):
         self.fm.notify(self.rest(1))
 
 
-class reduce_video_size(Command):
+# class reduce_video_size(Command):
+#     # Note: I must press enter after run the command in order to watch again ranger interface.
+#
+#     def loop_through_all_files(self):
+#         # import subprocess
+#         for index, file in enumerate(self.fm.thistab.get_selection(), start=0): 
+#             name_without_extension, _ = os.path.splitext(f"{file.basename}")
+#
+#             command = f"ffmpeg -i {file.dirname}/'{file.basename}' -vcodec libx265 -crf 28 '{name_without_extension}_reduced.mp4'"
+#             # note: I shoudn't use & at the end, because this creates a new thread and the ring sound isn't work well.
+#             command += " > /dev/null 2>&1" # send the output to /dev/null
+#
+#             #process1 = subprocess.Popen(command, shell=True) # detached way
+#             #self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE) # chatgpt said that the 2nd and 3rd parameters are innecesary and cand make problems
+#             self.fm.execute_command(command)
+#
+#     def ring_sound(self, t1):
+#         t1.join()
+#         import subprocess
+#         global end_sound
+#         #process2 = subprocess.Popen(end_sound, shell=True) # detached way
+#         self.fm.execute_command(end_sound, universal_newlines=True, stdout=subprocess.PIPE)
+#
+#
+#     def execute(self):
+#         from ranger.core.loader import Loader
+#         import threading
+#         t1 = threading.Thread(target=self.loop_through_all_files)
+#         t1.daemon = True
+#         t2 = threading.Thread(target=self.ring_sound, args=(t1,))
+#         t1.start()
+#         t2.start()
+
+class reduce_video_size(Command, Sounds):
     # Note: I must press enter after run the command in order to watch again ranger interface.
 
-    def loop_through_all_files(self):
+    def loop_through_all_files(self, t0):
         # import subprocess
+        t0.join()
         for index, file in enumerate(self.fm.thistab.get_selection(), start=0): 
             name_without_extension, _ = os.path.splitext(f"{file.basename}")
 
@@ -287,29 +379,38 @@ class reduce_video_size(Command):
             #self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE) # chatgpt said that the 2nd and 3rd parameters are innecesary and cand make problems
             self.fm.execute_command(command)
 
-
-    def ring_sound(self, t1):
-        t1.join()
+    def run_sound_command(self, sound_command, t0=None):
         import subprocess
-        end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
-        #process2 = subprocess.Popen(end_sound, shell=True) # detached way
-        self.fm.execute_command(end_sound, universal_newlines=True, stdout=subprocess.PIPE)
-
+        if t0: t0.join()
+        self.fm.execute_command(sound_command, universal_newlines=True, stdout=subprocess.PIPE)
+        # self.fm.execute_command("pkill paplay", universal_newlines=True, stdout=subprocess.PIPE)
 
     def execute(self):
         from ranger.core.loader import Loader
         import threading
-        t1 = threading.Thread(target=self.loop_through_all_files)
+
+        start_sound_command = self.get_command_sound_start()
+        end_sound_command = self.get_command_sound_end()
+
+        t0 = threading.Thread(target=self.run_sound_command, args=(start_sound_command,))
+        t0.daemon = True
+        t1 = threading.Thread(target=self.loop_through_all_files, args=(t0,))
         t1.daemon = True
-        t2 = threading.Thread(target=self.ring_sound, args=(t1,))
+        t2 = threading.Thread(target=self.run_sound_command, args=(end_sound_command, t1))
+
+        t0.start()
         t1.start()
         t2.start()
 
-class reduce_image_size(Command):
-    # Note: I must press enter after run the command in order to watch again ranger interface.
 
-    def loop_through_all_files(self):
-        # import subprocess
+
+class reduce_image_size(Command, Sounds):
+    """
+    Note: I must press enter after run the command in order to watch again ranger interface.
+    """
+
+    def loop_through_all_files(self, t0):
+        t0.join()
         for index, file in enumerate(self.fm.thistab.get_selection(), start=0): 
             name_without_extension, _ = os.path.splitext(f"{file.basename}")
 
@@ -323,29 +424,71 @@ class reduce_image_size(Command):
             self.fm.execute_command(command)
 
 
-    def ring_sound(self, t1):
-        t1.join()
+    def run_sound_command(self, sound_command, t0=None):
         import subprocess
-        end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
-        #process2 = subprocess.Popen(end_sound, shell=True) # detached way
-        self.fm.execute_command(end_sound, universal_newlines=True, stdout=subprocess.PIPE)
-
+        if t0: t0.join()
+        self.fm.execute_command(sound_command, universal_newlines=True, stdout=subprocess.PIPE)
+        # self.fm.execute_command("pkill paplay", universal_newlines=True, stdout=subprocess.PIPE)
 
     def execute(self):
         from ranger.core.loader import Loader
         import threading
-        t1 = threading.Thread(target=self.loop_through_all_files)
+
+        start_sound_command = self.get_command_sound_start()
+        end_sound_command = self.get_command_sound_end()
+
+        t0 = threading.Thread(target=self.run_sound_command, args=(start_sound_command,))
+        t0.daemon = True
+        t1 = threading.Thread(target=self.loop_through_all_files, args=(t0,))
         t1.daemon = True
-        t2 = threading.Thread(target=self.ring_sound, args=(t1,))
+        t2 = threading.Thread(target=self.run_sound_command, args=(end_sound_command, t1))
+
+        t0.start()
         t1.start()
         t2.start()
 
+# class extract_audio(Command):
+#     # Note: I must press enter after run the command in order to watch again ranger interface.
+#
+#     def loop_through_all_files(self):
+#         # import subprocess
+#         for index, file in enumerate(self.fm.thistab.get_selection(), start=0): 
+#             name_without_extension, _ = os.path.splitext(f"{file.basename}")
+#
+#             command = f"ffmpeg -i {file.dirname}/'{file.basename}' -acodec libmp3lame '{name_without_extension}_audio.mp3'"
+#
+# #     #    command = f"ffmpeg -i {this_file.dirname}/'{this_file.basename}' -acodec libmp3lame {this_file.dirname}/'{this_file.basename}.mp3' &"
+#
+#             # note: I shoudn't use & at the end, because this creates a new thread and the ring sound isn't work well.
+#             command += " > /dev/null 2>&1" # send the output to /dev/null
+#
+#             #process1 = subprocess.Popen(command, shell=True) # detached way
+#             #self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE) # chatgpt said that the 2nd and 3rd parameters are innecesary and cand make problems
+#             self.fm.execute_command(command)
+#
+#
+#     def ring_sound(self, t1):
+#         t1.join()
+#         import subprocess
+#         global end_sound
+#         #process2 = subprocess.Popen(end_sound, shell=True) # detached way
+#         self.fm.execute_command(end_sound, universal_newlines=True, stdout=subprocess.PIPE)
+#
+#
+#     def execute(self):
+#         from ranger.core.loader import Loader
+#         import threading
+#         t1 = threading.Thread(target=self.loop_through_all_files)
+#         t1.daemon = True
+#         t2 = threading.Thread(target=self.ring_sound, args=(t1,))
+#         t1.start()
+#         t2.start()
 
-class extract_audio(Command):
+class extract_audio(Command, Sounds):
     # Note: I must press enter after run the command in order to watch again ranger interface.
 
-    def loop_through_all_files(self):
-        # import subprocess
+    def loop_through_all_files(self, t0):
+        t0.join()
         for index, file in enumerate(self.fm.thistab.get_selection(), start=0): 
             name_without_extension, _ = os.path.splitext(f"{file.basename}")
 
@@ -361,27 +504,34 @@ class extract_audio(Command):
             self.fm.execute_command(command)
 
 
-    def ring_sound(self, t1):
-        t1.join()
+    def run_sound_command(self, sound_command, t0=None):
         import subprocess
-        end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
-        #process2 = subprocess.Popen(end_sound, shell=True) # detached way
-        self.fm.execute_command(end_sound, universal_newlines=True, stdout=subprocess.PIPE)
-
+        if t0: t0.join()
+        self.fm.execute_command(sound_command, universal_newlines=True, stdout=subprocess.PIPE)
+        # self.fm.execute_command("pkill paplay", universal_newlines=True, stdout=subprocess.PIPE)
 
     def execute(self):
         from ranger.core.loader import Loader
         import threading
-        t1 = threading.Thread(target=self.loop_through_all_files)
+
+        start_sound_command = self.get_command_sound_start()
+        end_sound_command = self.get_command_sound_end()
+
+        t0 = threading.Thread(target=self.run_sound_command, args=(start_sound_command,))
+        t0.daemon = True
+        t1 = threading.Thread(target=self.loop_through_all_files, args=(t0,))
         t1.daemon = True
-        t2 = threading.Thread(target=self.ring_sound, args=(t1,))
+        t2 = threading.Thread(target=self.run_sound_command, args=(end_sound_command, t1))
+
+        t0.start()
         t1.start()
         t2.start()
 
-class place_file_inside_folder(Command):
+class place_file_inside_folder(Command, Sounds):
     # Note: I must press enter after run the command in order to watch again ranger interface.
 
-    def loop_through_all_files(self):
+    def loop_through_all_files(self,t0):
+        t0.join()
         import subprocess
         for index, file in enumerate(self.fm.thistab.get_selection(), start=0): 
             name_without_extension, _ = os.path.splitext(f"{file.basename}")
@@ -395,26 +545,32 @@ class place_file_inside_folder(Command):
             self.fm.execute_command(command)
 
 
-    def ring_sound(self, t1):
-        t1.join()
+    def run_sound_command(self, sound_command, t0=None):
         import subprocess
-        end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
-        #process2 = subprocess.Popen(end_sound, shell=True) # detached way
-        self.fm.execute_command(end_sound, universal_newlines=True, stdout=subprocess.PIPE)
-
+        if t0: t0.join()
+        self.fm.execute_command(sound_command, universal_newlines=True, stdout=subprocess.PIPE)
+        # self.fm.execute_command("pkill paplay", universal_newlines=True, stdout=subprocess.PIPE)
 
     def execute(self):
         from ranger.core.loader import Loader
         import threading
-        t1 = threading.Thread(target=self.loop_through_all_files)
+
+        start_sound_command = self.get_command_sound_start()
+        end_sound_command = self.get_command_sound_end()
+
+        t0 = threading.Thread(target=self.run_sound_command, args=(start_sound_command,))
+        t0.daemon = True
+        t1 = threading.Thread(target=self.loop_through_all_files, args=(t0,))
         t1.daemon = True
-        t2 = threading.Thread(target=self.ring_sound, args=(t1,))
+        t2 = threading.Thread(target=self.run_sound_command, args=(end_sound_command, t1))
+
+        t0.start()
         t1.start()
         t2.start()
 
 
 
-class flip_horizontally_an_image(Command):
+class flip_horizontally_an_image(Command, Sounds):
     # Note: I must press enter after run the command in order to watch again ranger interface.
 
     def flip_image_horizontally(self, image_path, output_path):
@@ -426,7 +582,8 @@ class flip_horizontally_an_image(Command):
         except Exception as e:
             print(f"Error al voltear la imagen {image_path}: {e}")
 
-    def loop_through_all_files(self):
+    def loop_through_all_files(self,t0):
+        t0.join()
         for index, file in enumerate(self.fm.thistab.get_selection(), start=0): 
             name_without_extension, extension = os.path.splitext(f"{file.basename}")
             image_path = f"{file.dirname}/{file.basename}"
@@ -443,24 +600,30 @@ class flip_horizontally_an_image(Command):
             #process1 = subprocess.Popen(command, shell=True) # detached way
             #self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE) # chatgpt said that the 2nd and 3rd parameters are innecesary and cand make problems
 
-    def ring_sound(self, t1):
-        t1.join()
+    def run_sound_command(self, sound_command, t0=None):
         import subprocess
-        end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
-        #process2 = subprocess.Popen(end_sound, shell=True) # detached way
-        self.fm.execute_command(end_sound, universal_newlines=True, stdout=subprocess.PIPE)
+        if t0: t0.join()
+        self.fm.execute_command(sound_command, universal_newlines=True, stdout=subprocess.PIPE)
+        # self.fm.execute_command("pkill paplay", universal_newlines=True, stdout=subprocess.PIPE)
 
     def execute(self):
         from ranger.core.loader import Loader
         import threading
-        t1 = threading.Thread(target=self.loop_through_all_files)
+
+        start_sound_command = self.get_command_sound_start()
+        end_sound_command = self.get_command_sound_end()
+
+        t0 = threading.Thread(target=self.run_sound_command, args=(start_sound_command,))
+        t0.daemon = True
+        t1 = threading.Thread(target=self.loop_through_all_files, args=(t0,))
         t1.daemon = True
-        t2 = threading.Thread(target=self.ring_sound, args=(t1,))
+        t2 = threading.Thread(target=self.run_sound_command, args=(end_sound_command, t1))
+
+        t0.start()
         t1.start()
         t2.start()
-        self.fm.notify("Todas las imágenes seleccionadas han sido volteadas", bad=False)
 
-class crop_to_854x480(Command):
+class crop_to_854x480(Command, Sounds):
     def crop_image(self, image_path, output_path):
         try:
             img = Image.open(image_path)
@@ -486,7 +649,8 @@ class crop_to_854x480(Command):
         except Exception as e:
             print(f"Error al cortar la imagen '{image_path}': {e}")
 
-    def loop_through_all_files(self):
+    def loop_through_all_files(self,t0):
+        t0.join()
         for file in self.fm.thistab.get_selection():
             name_without_extension, extension = os.path.splitext(file.basename)
             image_path = file.path
@@ -494,26 +658,33 @@ class crop_to_854x480(Command):
             print(f"Procesando: {image_path} -> {output_path}")
             self.crop_image(image_path, output_path)
 
-    def ring_sound(self, t1):
-        t1.join()
+    def run_sound_command(self, sound_command, t0=None):
         import subprocess
-        end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
-        #process2 = subprocess.Popen(end_sound, shell=True) # detached way
-        self.fm.execute_command(end_sound, universal_newlines=True, stdout=subprocess.PIPE)
+        if t0: t0.join()
+        self.fm.execute_command(sound_command, universal_newlines=True, stdout=subprocess.PIPE)
+        # self.fm.execute_command("pkill paplay", universal_newlines=True, stdout=subprocess.PIPE)
 
     def execute(self):
-        from ranger.core.loader import Loader
+        # from ranger.core.loader import Loader
         import threading
-        t1 = threading.Thread(target=self.loop_through_all_files)
+
+        start_sound_command = self.get_command_sound_start()
+        end_sound_command = self.get_command_sound_end()
+
+        t0 = threading.Thread(target=self.run_sound_command, args=(start_sound_command,))
+        t0.daemon = True
+        t1 = threading.Thread(target=self.loop_through_all_files, args=(t0,))
         t1.daemon = True
-        t2 = threading.Thread(target=self.ring_sound, args=(t1,))
+        t2 = threading.Thread(target=self.run_sound_command, args=(end_sound_command, t1))
+
+        t0.start()
         t1.start()
         t2.start()
         self.fm.notify("Todas las imágenes seleccionadas han sido cortadas a 854x480", bad=False)
 
 
 
-class resize_to_1280x720(Command):
+class resize_to_1280x720(Command, Sounds):
     def resize_image(self, image_path, output_path):
         try:
             img = Image.open(image_path)
@@ -525,7 +696,8 @@ class resize_to_1280x720(Command):
         except Exception as e:
             print(f"Error al cambiar el tamaño de la imagen '{image_path}': {e}")
 
-    def loop_through_all_files(self):
+    def loop_through_all_files(self,t0):
+        t0.join()
         for file in self.fm.thistab.get_selection():
             name_without_extension, extension = os.path.splitext(file.basename)
             image_path = file.path
@@ -533,29 +705,36 @@ class resize_to_1280x720(Command):
             print(f"Procesando: {image_path} -> {output_path}")
             self.resize_image(image_path, output_path)
 
-    def ring_sound(self, t1):
-        t1.join()
+    def run_sound_command(self, sound_command, t0=None):
         import subprocess
-        end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
-        #process2 = subprocess.Popen(end_sound, shell=True) # detached way
-        self.fm.execute_command(end_sound, universal_newlines=True, stdout=subprocess.PIPE)
+        if t0: t0.join()
+        self.fm.execute_command(sound_command, universal_newlines=True, stdout=subprocess.PIPE)
+        # self.fm.execute_command("pkill paplay", universal_newlines=True, stdout=subprocess.PIPE)
 
     def execute(self):
-        from ranger.core.loader import Loader
+        # from ranger.core.loader import Loader
         import threading
-        t1 = threading.Thread(target=self.loop_through_all_files)
+
+        start_sound_command = self.get_command_sound_start()
+        end_sound_command = self.get_command_sound_end()
+
+        t0 = threading.Thread(target=self.run_sound_command, args=(start_sound_command,))
+        t0.daemon = True
+        t1 = threading.Thread(target=self.loop_through_all_files, args=(t0,))
         t1.daemon = True
-        t2 = threading.Thread(target=self.ring_sound, args=(t1,))
+        t2 = threading.Thread(target=self.run_sound_command, args=(end_sound_command, t1))
+
+        t0.start()
         t1.start()
         t2.start()
         self.fm.notify("Todas las imágenes seleccionadas han sido redimensionadas a 1280x720", bad=False)
 
 
-class convert_from_opus_to_mp3(Command):
+class convert_from_opus_to_mp3(Command, Sounds):
     # Note: I must press enter after run the command in order to watch again ranger interface.
 
-    def loop_through_all_files(self):
-        # import subprocess
+    def loop_through_all_files(self,t0):
+        t0.join()
         for index, file in enumerate(self.fm.thistab.get_selection(), start=0): 
             name_without_extension, _ = os.path.splitext(f"{file.basename}")
 
@@ -569,29 +748,35 @@ class convert_from_opus_to_mp3(Command):
             self.fm.execute_command(command)
 
 
-    def ring_sound(self, t1):
-        t1.join()
+    def run_sound_command(self, sound_command, t0=None):
         import subprocess
-        end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
-        #process2 = subprocess.Popen(end_sound, shell=True) # detached way
-        self.fm.execute_command(end_sound, universal_newlines=True, stdout=subprocess.PIPE)
-
+        if t0: t0.join()
+        self.fm.execute_command(sound_command, universal_newlines=True, stdout=subprocess.PIPE)
+        # self.fm.execute_command("pkill paplay", universal_newlines=True, stdout=subprocess.PIPE)
 
     def execute(self):
-        from ranger.core.loader import Loader
+        # from ranger.core.loader import Loader
         import threading
-        t1 = threading.Thread(target=self.loop_through_all_files)
+
+        start_sound_command = self.get_command_sound_start()
+        end_sound_command = self.get_command_sound_end()
+
+        t0 = threading.Thread(target=self.run_sound_command, args=(start_sound_command,))
+        t0.daemon = True
+        t1 = threading.Thread(target=self.loop_through_all_files, args=(t0,))
         t1.daemon = True
-        t2 = threading.Thread(target=self.ring_sound, args=(t1,))
+        t2 = threading.Thread(target=self.run_sound_command, args=(end_sound_command, t1))
+
+        t0.start()
         t1.start()
         t2.start()
         self.fm.notify("All opus files have been converted to mp3 files.", bad=False)
 
-class convert_from_opus_to_m4a(Command):
+class convert_from_opus_to_m4a(Command, Sounds):
     # Note: I must press enter after run the command in order to watch again ranger interface.
 
-    def loop_through_all_files(self):
-        # import subprocess
+    def loop_through_all_files(self,t0):
+        t0.join()
         for index, file in enumerate(self.fm.thistab.get_selection(), start=0): 
             name_without_extension, _ = os.path.splitext(f"{file.basename}")
 
@@ -606,29 +791,35 @@ class convert_from_opus_to_m4a(Command):
             self.fm.execute_command(command)
 
 
-    def ring_sound(self, t1):
-        t1.join()
+    def run_sound_command(self, sound_command, t0=None):
         import subprocess
-        end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
-        #process2 = subprocess.Popen(end_sound, shell=True) # detached way
-        self.fm.execute_command(end_sound, universal_newlines=True, stdout=subprocess.PIPE)
-
+        if t0: t0.join()
+        self.fm.execute_command(sound_command, universal_newlines=True, stdout=subprocess.PIPE)
+        # self.fm.execute_command("pkill paplay", universal_newlines=True, stdout=subprocess.PIPE)
 
     def execute(self):
-        from ranger.core.loader import Loader
+        # from ranger.core.loader import Loader
         import threading
-        t1 = threading.Thread(target=self.loop_through_all_files)
+
+        start_sound_command = self.get_command_sound_start()
+        end_sound_command = self.get_command_sound_end()
+
+        t0 = threading.Thread(target=self.run_sound_command, args=(start_sound_command,))
+        t0.daemon = True
+        t1 = threading.Thread(target=self.loop_through_all_files, args=(t0,))
         t1.daemon = True
-        t2 = threading.Thread(target=self.ring_sound, args=(t1,))
+        t2 = threading.Thread(target=self.run_sound_command, args=(end_sound_command, t1))
+
+        t0.start()
         t1.start()
         t2.start()
         self.fm.notify("All opus files have been converted to .m4a files.", bad=False)
 
-class zip_playstation_file_in_local_disk(Command):
+class zip_playstation_file_in_local_disk(Command, Sounds):
     # Note: I must press enter after run the command in order to watch again ranger interface.
 
-    def loop_through_all_files(self):
-        # import subprocess
+    def loop_through_all_files(self,t0):
+        t0.join()
         for index, file in enumerate(self.fm.thistab.get_selection(), start=0): 
             name_without_extension, _ = os.path.splitext(f"{file.basename}")
 
@@ -644,30 +835,34 @@ class zip_playstation_file_in_local_disk(Command):
             #self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE) # chatgpt said that the 2nd and 3rd parameters are innecesary and cand make problems
             self.fm.execute_command(command)
 
-
-    def ring_sound(self, t1):
-        t1.join()
+    def run_sound_command(self, sound_command, t0=None):
         import subprocess
-        end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
-        #process2 = subprocess.Popen(end_sound, shell=True) # detached way
-        self.fm.execute_command(end_sound, universal_newlines=True, stdout=subprocess.PIPE)
-
+        if t0: t0.join()
+        self.fm.execute_command(sound_command, universal_newlines=True, stdout=subprocess.PIPE)
+        # self.fm.execute_command("pkill paplay", universal_newlines=True, stdout=subprocess.PIPE)
 
     def execute(self):
-        from ranger.core.loader import Loader
+        # from ranger.core.loader import Loader
         import threading
-        t1 = threading.Thread(target=self.loop_through_all_files)
+
+        start_sound_command = self.get_command_sound_start()
+        end_sound_command = self.get_command_sound_end()
+
+        t0 = threading.Thread(target=self.run_sound_command, args=(start_sound_command,))
+        t0.daemon = True
+        t1 = threading.Thread(target=self.loop_through_all_files, args=(t0,))
         t1.daemon = True
-        t2 = threading.Thread(target=self.ring_sound, args=(t1,))
+        t2 = threading.Thread(target=self.run_sound_command, args=(end_sound_command, t1))
+
+        t0.start()
         t1.start()
         t2.start()
-        self.fm.notify("Convert to zip and copy to the desired output path.", bad=False)
 
-class split_file_in_1G_size_files(Command):
+class split_file_in_1G_size_files(Command, Sounds):
     # Note: I must press enter after run the command in order to watch again ranger interface.
 
-    def loop_through_all_files(self):
-        # import subprocess
+    def loop_through_all_files(self,t0):
+        t0.join()
         for index, file in enumerate(self.fm.thistab.get_selection(), start=0): 
             name_without_extension, _ = os.path.splitext(f"{file.basename}")
 
@@ -680,25 +875,31 @@ class split_file_in_1G_size_files(Command):
             #self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE) # chatgpt said that the 2nd and 3rd parameters are innecesary and cand make problems
             self.fm.execute_command(command)
 
-    def ring_sound(self, t1):
-        t1.join()
+    def run_sound_command(self, sound_command, t0=None):
         import subprocess
-        end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
-        #process2 = subprocess.Popen(end_sound, shell=True) # detached way
-        self.fm.execute_command(end_sound, universal_newlines=True, stdout=subprocess.PIPE)
-
+        if t0: t0.join()
+        self.fm.execute_command(sound_command, universal_newlines=True, stdout=subprocess.PIPE)
+        # self.fm.execute_command("pkill paplay", universal_newlines=True, stdout=subprocess.PIPE)
 
     def execute(self):
-        from ranger.core.loader import Loader
+        # from ranger.core.loader import Loader
         import threading
-        t1 = threading.Thread(target=self.loop_through_all_files)
+
+        start_sound_command = self.get_command_sound_start()
+        end_sound_command = self.get_command_sound_end()
+
+        t0 = threading.Thread(target=self.run_sound_command, args=(start_sound_command,))
+        t0.daemon = True
+        t1 = threading.Thread(target=self.loop_through_all_files, args=(t0,))
         t1.daemon = True
-        t2 = threading.Thread(target=self.ring_sound, args=(t1,))
+        t2 = threading.Thread(target=self.run_sound_command, args=(end_sound_command, t1))
+
+        t0.start()
         t1.start()
         t2.start()
         self.fm.notify("Split zip file in 1G small zip files.", bad=False)
 
-class add_name_text_to_image(Command):
+class add_name_text_to_image(Command, Sounds):
     """
         When I upload pictures to telegram the name and the date are removed,
         so I use this script to put the picture name(which has the date) in the picture.
@@ -740,8 +941,8 @@ class add_name_text_to_image(Command):
         except Exception as e:
             self.fm.notify(f"Error al cambiar el tamaño de la imagen '{image_path}': {e}", bad=True)
 
-    def loop_through_all_files(self):
-        # import subprocess
+    def loop_through_all_files(self,t0):
+        t0.join()
         for index, file in enumerate(self.fm.thistab.get_selection(), start=0): 
             # name_without_extension, _ = os.path.splitext(f"{file.basename}")
             if file.basename.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp')):
@@ -749,32 +950,38 @@ class add_name_text_to_image(Command):
                 output_path = os.path.join(file.dirname, f"annotated_{file.basename}")
                 self.__add_text_to_image(image_path, output_path, file.basename)
 
-    def ring_sound(self, t1):
-        t1.join()
+    def run_sound_command(self, sound_command, t0=None):
         import subprocess
-        end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
-        #process2 = subprocess.Popen(end_sound, shell=True) # detached way
-        self.fm.execute_command(end_sound, universal_newlines=True, stdout=subprocess.PIPE)
-
+        if t0: t0.join()
+        self.fm.execute_command(sound_command, universal_newlines=True, stdout=subprocess.PIPE)
+        # self.fm.execute_command("pkill paplay", universal_newlines=True, stdout=subprocess.PIPE)
 
     def execute(self):
         # from ranger.core.loader import Loader
         import threading
-        t1 = threading.Thread(target=self.loop_through_all_files)
+
+        start_sound_command = self.get_command_sound_start()
+        end_sound_command = self.get_command_sound_end()
+
+        t0 = threading.Thread(target=self.run_sound_command, args=(start_sound_command,))
+        t0.daemon = True
+        t1 = threading.Thread(target=self.loop_through_all_files, args=(t0,))
         t1.daemon = True
-        t2 = threading.Thread(target=self.ring_sound, args=(t1,))
+        t2 = threading.Thread(target=self.run_sound_command, args=(end_sound_command, t1))
+
+        t0.start()
         t1.start()
         t2.start()
         # self.fm.notify("added the name to the image", bad=False)
 
-class convert_pdf_to_jpeg(Command):
+class convert_pdf_to_jpeg(Command, Sounds):
     """
     This command uses pdftoppm linux command.
         - NOTE: this command has an little error, I must press <enter> after I sended the command.
     """
 
-    def loop_through_all_files(self):
-        # import subprocess
+    def loop_through_all_files(self,t0):
+        t0.join()
         for index, file in enumerate(self.fm.thistab.get_selection(), start=0): 
             name_without_extension, _ = os.path.splitext(f"{file.basename}")
 
@@ -791,20 +998,26 @@ class convert_pdf_to_jpeg(Command):
             self.fm.execute_command(command)
 
 
-    def ring_sound(self, t1):
-        t1.join()
+    def run_sound_command(self, sound_command, t0=None):
         import subprocess
-        end_sound = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"
-        #process2 = subprocess.Popen(end_sound, shell=True) # detached way
-        self.fm.execute_command(end_sound, universal_newlines=True, stdout=subprocess.PIPE)
-
+        if t0: t0.join()
+        self.fm.execute_command(sound_command, universal_newlines=True, stdout=subprocess.PIPE)
+        # self.fm.execute_command("pkill paplay", universal_newlines=True, stdout=subprocess.PIPE)
 
     def execute(self):
-        from ranger.core.loader import Loader
+        # from ranger.core.loader import Loader
         import threading
-        t1 = threading.Thread(target=self.loop_through_all_files)
+
+        start_sound_command = self.get_command_sound_start()
+        end_sound_command = self.get_command_sound_end()
+
+        t0 = threading.Thread(target=self.run_sound_command, args=(start_sound_command,))
+        t0.daemon = True
+        t1 = threading.Thread(target=self.loop_through_all_files, args=(t0,))
         t1.daemon = True
-        t2 = threading.Thread(target=self.ring_sound, args=(t1,))
+        t2 = threading.Thread(target=self.run_sound_command, args=(end_sound_command, t1))
+
+        t0.start()
         t1.start()
         t2.start()
         self.fm.notify("The pdf file was convert to jpeg.", bad=False)
